@@ -18,12 +18,12 @@ try:
         page.goto(os.environ.get('AUDIT_URL',f'http://127.0.0.1:{server.server_port}'),wait_until='networkidle')
         page.wait_for_selector('#res.vis')
         assert page.locator('#fromStation').input_value()=='Stratford'
-        before=page.locator('#res').inner_text()
+        before=page.locator('#mbarLabel').inner_text()
         assert 'NaN' not in before and 'Infinity' not in before
         page.locator('#days').select_option('5');page.locator('#goBtn').click()
-        page.wait_for_function("expected => document.querySelector('#res').innerText!==expected",arg=before)
+        page.wait_for_function("expected => document.querySelector('#mbarLabel').innerText!==expected",arg=before)
         page.locator('#days').select_option('3');page.locator('#goBtn').click()
-        page.wait_for_function("expected => document.querySelector('#res').innerText===expected",arg=before)
+        page.wait_for_function("expected => document.querySelector('#mbarLabel').innerText===expected",arg=before)
         page.locator('#fromStation').fill('Nonexistent station')
         assert not page.locator('#res').is_visible()
         assert 'disabled' in page.locator('#goBtn').get_attribute('class')
