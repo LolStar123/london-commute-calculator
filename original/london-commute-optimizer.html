@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>London Commute Cost Optimizer — Find Your Cheapest Way to Commute</title>
+<meta name="description" content="Compare every TfL ticket option and find the cheapest way to commute in London. Pay-as-you-go, travel passes, Railcard — we calculate it all in 60 seconds.">
+<meta name="theme-color" content="#003688" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="London Commute Cost Optimizer">
+<meta property="og:description" content="Find the cheapest way to commute in London. Compare pay-as-you-go, travel passes, and Railcard options for 400+ stations.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚇</text></svg>">
+<link rel="dns-prefetch" href="https://tfl.gov.uk">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"London Commute Cost Optimizer","description":"Compare every TfL ticket option and find the cheapest way to commute in London. Pay-as-you-go, travel passes, Railcard — we calculate it all in 60 seconds.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"9","priceCurrency":"GBP"},"featureList":["400+ London stations","Peak and off-peak fares","Daily and weekly capping","Railcard discounts","Boundary zone optimization","Works offline"],"dateModified":"2026-04-07"}</script>
+<style>
+:root{--blue:#003688;--blue-l:#0053a0;--blue-pale:#eef2ff;--red:#e1251b;--green:#00782a;--green-bg:#e8f5e9;
+--amber:#f59e0b;--amber-bg:#fffbeb;--bg:#f5f6f8;--card:#fff;--text:#1d1d1b;--muted:#555;--dim:#767676;
+--border:#dde1e6;--shadow:0 2px 16px rgba(0,0,0,0.07);--r:14px;--hint:#717171}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,54,136,.1)}
+button,a,.aci,.faq-q,.ocard{touch-action:manipulation}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:var(--blue-pale);color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px;border-radius:4px}
+.wrap{max-width:820px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left))}
+
+/* Page load */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+header{animation:fadeIn .6s ease-out}
+.hero{animation:slideUp .5s ease-out .2s both}
+
+/* Header */
+header{background:linear-gradient(135deg,#002255 0%,var(--blue) 50%,#004bac 100%);color:#fff;padding:56px 0 48px;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;top:-40%;left:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);border-radius:50%}
+header::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:40px;background:var(--bg);border-radius:50% 50% 0 0/100% 100% 0 0}
+header h1{font-size:2.1rem;font-weight:800;letter-spacing:-.5px;margin-bottom:8px;position:relative;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+header p{font-size:1.05rem;opacity:.88;max-width:500px;margin:0 auto;position:relative;line-height:1.5}
+.badge{display:inline-block;margin-top:16px;background:rgba(255,255,255,.14);padding:6px 18px;border-radius:20px;font-size:.78rem;letter-spacing:.3px;backdrop-filter:blur(4px);position:relative}
+
+/* Section */
+.section{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:28px 32px;margin-top:24px;transition:box-shadow .3s,transform .3s}
+.section:hover{box-shadow:0 4px 24px rgba(0,0,0,.09);transform:translateY(-1px)}
+.section.hero{margin-top:-20px;z-index:2;position:relative;scroll-margin-top:16px}.section.hero:hover{transform:none;box-shadow:var(--shadow)}
+.section h2{font-size:1.05rem;font-weight:700;color:var(--blue);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.section h2 .num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
+.section h3{font-size:.95rem;font-weight:700;color:var(--blue);margin:18px 0 12px}
+
+/* Inputs */
+.srow{display:grid;grid-template-columns:1fr 44px 1fr;gap:10px;align-items:end}
+.swap{width:44px;height:44px;border:2px solid var(--border);border-radius:50%;background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .3s cubic-bezier(.4,0,.2,1);margin-bottom:2px}
+.swap:hover{border-color:var(--blue);background:var(--blue-pale);transform:rotate(180deg);box-shadow:0 2px 8px rgba(0,54,136,.15)}
+.swap:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px}
+.swap.clicked{transform:rotate(180deg);border-color:var(--green);background:var(--green-bg)}
+.fg{position:relative}
+.fg label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:5px;letter-spacing:.1px}
+.si{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:10px;font-size:1rem;background:var(--card);transition:border-color .2s,box-shadow .2s}
+.si::placeholder{color:#aab;font-weight:400}
+.si[type="number"]::-webkit-inner-spin-button,.si[type="number"]::-webkit-outer-spin-button{opacity:1;height:28px}
+.si:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,83,160,.12)}
+.si:hover:not(:focus){border-color:#b0b8c4}
+.si.ok{border-color:var(--green);background:#f0fdf4;box-shadow:0 0 0 3px rgba(0,120,42,.08)}
+.fg:has(.si.ok[role="combobox"])::after{content:'\2713';position:absolute;right:14px;top:50%;transform:translateY(25%);color:var(--green);font-weight:700;font-size:.9rem;pointer-events:none}
+select.si{cursor:pointer;appearance:auto}
+.hint{font-size:.72rem;color:var(--hint);margin-top:3px}
+.sec-desc{font-size:.88rem;color:var(--muted);margin:-10px 0 16px;line-height:1.6}
+
+/* Autocomplete */
+.acd{position:absolute;top:100%;left:0;right:0;background:var(--card);border:2px solid var(--blue);border-top:0;border-radius:0 0 10px 10px;max-height:260px;overflow-y:auto;z-index:100;display:none;box-shadow:0 10px 30px rgba(0,0,0,.15);scrollbar-width:thin;scrollbar-color:var(--border) transparent;overscroll-behavior:contain}
+.acd::-webkit-scrollbar{width:6px}.acd::-webkit-scrollbar-track{background:transparent}.acd::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}.acd::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+.acd.open{display:block}
+.aci{padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.88rem;border-bottom:1px solid var(--border);transition:background .1s}
+.aci:last-child{border-bottom:none}
+.aci:hover,.aci.act{background:var(--blue-pale)}
+.aci .nm{font-weight:500}
+.aci .zt{font-size:.72rem;background:var(--bg);padding:2px 8px;border-radius:4px;color:var(--muted);font-weight:600}
+
+/* Journey bar */
+.jbar{background:var(--blue-pale);border-radius:10px;font-size:.88rem;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid rgba(0,54,136,.1);display:flex;max-height:0;overflow:hidden;opacity:0;padding:0 18px;margin-top:0;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,margin .35s ease}
+.jbar.vis{max-height:120px;opacity:1;padding:14px 18px;margin-top:14px}
+.zvis{display:flex;gap:3px;align-items:center}
+@keyframes zdPop{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+.zd{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.15);transition:transform .2s;animation:zdPop .3s cubic-bezier(.34,1.56,.64,1) both}
+.zd:hover{transform:scale(1.15)}
+.zd.z1{background:#e1251b}.zd.z2{background:#0019a8}.zd.z3{background:#ffce00;color:#333}.zd.z4{background:#00782a}.zd.z5{background:#f37fb7;color:#333}.zd.z6{background:#ef7b10}.zd.z7{background:#7b68ee}.zd.z8{background:#20b2aa}.zd.z9{background:#cd853f}
+.zcon{width:14px;height:2px;background:var(--blue)}
+.fprev{margin-left:auto;font-weight:600;color:var(--blue);font-size:.85rem}
+.jerr{margin-top:10px;padding:12px 16px;background:var(--amber-bg);border:1px solid var(--amber);border-radius:8px;color:#92400e;font-size:.82rem;display:none;line-height:1.5}
+.jerr.vis{display:flex;align-items:flex-start;gap:8px}
+.jerr::before{content:'⚠';flex-shrink:0;font-size:1rem}
+
+/* Grid */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.g-cards .ocard{animation:cardIn .4s ease-out both}
+.g-cards .ocard:nth-child(1){animation-delay:0s}
+.g-cards .ocard:nth-child(2){animation-delay:.08s}
+.g-cards .ocard:nth-child(3){animation-delay:.16s}
+.g-cards .ocard:nth-child(4){animation-delay:.24s}
+.g-cards .ocard:nth-child(5){animation-delay:.32s}
+.g-cards .ocard:nth-child(6){animation-delay:.4s}
+.full{grid-column:1/-1}
+
+/* Time badge */
+.tb{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle;transition:background .3s,color .3s}
+.tb.pk{background:#fef2f2;color:var(--red)}.tb.op{background:var(--green-bg);color:var(--green)}
+
+/* Results */
+.results{display:none;scroll-margin-top:20px}.results.vis{display:block}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.results.vis{animation:fadeSlideIn .5s ease-out}
+
+/* Recommendation hero */
+.reco{background:linear-gradient(135deg,#00782a,#059669);color:#fff;border-radius:var(--r);padding:40px 32px 36px;text-align:center;margin-bottom:22px;position:relative;overflow:hidden;outline:none}
+@keyframes recoReveal{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.results.vis .reco{animation:recoReveal .5s cubic-bezier(.22,1,.36,1) .15s both}
+.reco::before{content:'';position:absolute;top:-50%;right:-20%;width:250px;height:250px;background:rgba(255,255,255,.06);border-radius:50%}
+.reco::after{content:'';position:absolute;bottom:-30%;left:-10%;width:180px;height:180px;background:rgba(255,255,255,.04);border-radius:50%}
+.reco .big{font-size:2.4rem;font-weight:800;display:block;line-height:1.2;position:relative}
+.reco .sub{font-size:1rem;opacity:.9;margin-top:6px;position:relative}.reco .sub-cost{margin-top:8px}
+.reco .act{display:inline-block;margin-top:16px;background:rgba(255,255,255,.2);padding:10px 24px;border-radius:10px;font-size:.9rem;font-weight:600;backdrop-filter:blur(4px);position:relative}
+.reco .vs{font-size:.85rem;opacity:.8;margin-top:10px;position:relative}
+
+/* Option cards */
+.ocard{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:22px;border:2px solid transparent;transition:all .25s ease;position:relative;overflow:hidden;cursor:pointer;will-change:transform}
+.ocard:active{transform:translateY(0) scale(.98);transition-duration:.1s}
+.ocard:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px}
+.ocard:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.1),inset 4px 0 0 var(--blue)}
+.ocard.best:hover{box-shadow:0 8px 30px rgba(0,0,0,.1),inset 4px 0 0 var(--green)}
+.ocard.best{border-color:var(--green);background:linear-gradient(to bottom,var(--green-bg),var(--card));box-shadow:var(--shadow),inset 0 3px 0 0 var(--green)}
+@keyframes badgeDrop{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.ocard .cbadge{position:absolute;top:-10px;right:14px;background:linear-gradient(110deg,var(--green) 35%,#34d399 50%,var(--green) 65%);background-size:200% 100%;color:#fff;font-size:.63rem;font-weight:700;padding:3px 10px;border-radius:8px;text-transform:uppercase;letter-spacing:.5px;animation:badgeDrop .4s ease-out .3s both,shimmer 3s ease-in-out 1s infinite}
+.ocard .cn{font-size:.8rem;font-weight:600;color:var(--muted)}
+.ocard .ca{font-size:1.6rem;font-weight:800}
+.ocard .ca small{font-size:.4em;font-weight:400;opacity:.5}
+.ocard .cm{font-size:.8rem;color:var(--muted);margin-bottom:8px}
+.ocard .cd{font-size:.78rem;font-weight:600;padding:3px 9px;border-radius:6px;display:inline-block}
+.cd.sv{background:var(--green-bg);color:var(--green)}.cd.ex{background:#fef2f2;color:#dc2626}
+
+/* Table */
+.bt{width:100%;border-collapse:separate;border-spacing:0;font-size:.85rem}
+.bt th{text-align:left;padding:9px 10px;background:var(--bg);font-weight:600;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.3px;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:2;box-shadow:0 2px 0 var(--border)}
+.bt td{padding:10px;border-bottom:1px solid var(--border)}.bt td:first-child{font-weight:600}
+.bt tbody tr:nth-child(even) td{background:var(--bg)}
+.bt tr.best td{background:var(--green-bg);font-weight:600}
+.bt tbody tr:hover td{background:var(--blue-pale)}
+.bt tr.best:hover td{background:#d1fae5;background:color-mix(in srgb,var(--green-bg) 70%,var(--blue-pale) 30%)}
+.bt tr.hl td{background:var(--blue-pale);transition:background .3s}
+
+/* Progress steps */
+.progress{display:flex;justify-content:center;gap:0;margin:20px 0 0;position:relative}
+.pstep{display:flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;color:var(--dim);transition:color .3s}
+.pstep.active{color:var(--blue)}
+.pstep.done{color:var(--green)}
+.pstep .pnum{width:24px;height:24px;border-radius:50%;border:2px solid currentColor;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;transition:all .3s}
+.pstep.done .pnum{background:var(--green);border-color:var(--green);color:#fff;font-size:0}
+.pstep .pnum::after{content:'\\2713';font-size:.65rem;opacity:0;transform:scale(0);transition:opacity .3s,transform .3s}
+.pstep.done .pnum::after{opacity:1;transform:scale(1)}
+.pstep.active .pnum{background:var(--blue);border-color:var(--blue);color:#fff}
+.pline{width:40px;height:2px;background:var(--border);margin:0 8px;align-self:center;transition:background .3s}
+.pline.done{background:var(--green)}
+
+/* Trust strip */
+.trust{display:flex;justify-content:center;gap:28px;padding:18px 0 0;flex-wrap:wrap;position:relative}
+.trust-item{display:flex;align-items:center;gap:6px;font-size:.78rem;color:rgba(255,255,255,.8);font-weight:500}
+.trust-item .ti{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.15);display:inline-flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0}
+
+/* Empty state teaser */
+.teaser{text-align:center;padding:44px 20px;color:var(--dim);border:2px dashed var(--border);background:transparent;box-shadow:none;transition:opacity .4s,transform .4s}
+.teaser.fade-out{opacity:0;transform:translateY(-10px);pointer-events:none}
+.teaser:hover{box-shadow:none}
+.teaser .t-icon{font-size:1.6rem;margin-bottom:14px;display:block;opacity:.35;animation:bounceDown 2s ease-in-out infinite}
+@keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.teaser p{font-size:.9rem;max-width:380px;margin:0 auto;line-height:1.6}
+
+/* Tip boxes */
+.tip{border-radius:var(--r);padding:18px 22px;margin-top:14px}.tip+.tip{margin-top:10px}
+#tips .tip{margin-top:0;margin-bottom:10px}
+.tip.green{background:var(--green-bg);border:2px solid var(--green)}.tip.green h4{color:#166534}
+.tip.amber{background:var(--amber-bg);border:2px solid var(--amber)}.tip.amber h4{color:#92400e}
+.tip.blue{background:var(--blue-pale);border:2px solid var(--blue-l)}.tip.blue h4{color:var(--blue)}
+.tip h4{font-size:.9rem;margin-bottom:4px;display:flex;align-items:center;gap:6px}.tip h4::before{flex-shrink:0;font-size:.85rem}.tip.green h4::before{content:'\\2713'}.tip.amber h4::before{content:'\\26A0'}.tip.blue h4::before{content:'\\2139'}
+.tip p{font-size:.85rem;color:var(--muted)}
+.tip .sv{font-weight:700;font-size:1.05rem}
+
+/* WFH bars */
+.wb{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.wb .wl{font-size:.82rem;width:72px;flex-shrink:0;font-weight:600}
+.wb .bw{flex:1;height:30px;background:var(--bg);border-radius:6px;overflow:hidden}
+.wb .b{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:.72rem;font-weight:600;color:#fff;white-space:nowrap;transition:width .5s cubic-bezier(.4,0,.2,1);min-width:0;overflow:hidden;text-overflow:ellipsis}
+.wb:nth-child(1) .b{transition-delay:0s}.wb:nth-child(2) .b{transition-delay:.06s}.wb:nth-child(3) .b{transition-delay:.12s}.wb:nth-child(4) .b{transition-delay:.18s}.wb:nth-child(5) .b{transition-delay:.24s}.wb:nth-child(6) .b{transition-delay:.3s}
+.b.cur{background:var(--blue)}.b.alt{background:var(--green)}
+.wb-cur .wl{color:var(--blue)}.you{font-size:.6rem;background:var(--blue);color:#fff;padding:1px 5px;border-radius:3px;margin-left:3px;vertical-align:middle;letter-spacing:.3px}
+
+/* Driving comparison */
+.dcomp{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;text-align:center;padding:20px 0}
+.dcomp .vs-badge{background:var(--bg);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:var(--muted);border:2px solid var(--border)}
+.dcomp .method{font-size:.82rem;color:var(--muted);margin-bottom:4px;font-weight:600}
+.dcomp .price{font-size:1.8rem;font-weight:800}
+.dcomp .price.win{color:var(--green)}
+.dcomp .price.lose{color:var(--red)}
+.dcomp .detail{font-size:.75rem;color:var(--dim);margin-top:2px}
+
+/* Fun stats */
+.fsg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fs{text-align:center;padding:18px 8px;background:var(--bg);border-radius:10px;transition:transform .2s,box-shadow .2s}
+.fs:hover{transform:scale(1.04);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.fs .n{font-size:1.5rem;font-weight:800;color:var(--blue);display:block;line-height:1.2}
+.fs .d{font-size:.72rem;color:var(--muted)}
+.fs-wide{grid-column:1/-1}
+
+/* Monthly bars */
+.mbar{display:flex;align-items:end;gap:6px;height:120px;margin:16px 0 8px;padding:0 4px}
+.mbar .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px}
+.mbar .bar{width:100%;border-radius:4px 4px 0 0;background:var(--blue);transition:height .5s cubic-bezier(.4,0,.2,1),opacity .2s;min-height:2px;opacity:.85}
+.mbar .col:nth-child(1) .bar{transition-delay:0s}.mbar .col:nth-child(2) .bar{transition-delay:.03s}.mbar .col:nth-child(3) .bar{transition-delay:.06s}.mbar .col:nth-child(4) .bar{transition-delay:.09s}.mbar .col:nth-child(5) .bar{transition-delay:.12s}.mbar .col:nth-child(6) .bar{transition-delay:.15s}.mbar .col:nth-child(7) .bar{transition-delay:.18s}.mbar .col:nth-child(8) .bar{transition-delay:.21s}.mbar .col:nth-child(9) .bar{transition-delay:.24s}.mbar .col:nth-child(10) .bar{transition-delay:.27s}.mbar .col:nth-child(11) .bar{transition-delay:.3s}.mbar .col:nth-child(12) .bar{transition-delay:.33s}
+.mbar .col:hover .bar{opacity:1}
+.mbar .ml{font-size:.65rem;color:var(--dim);font-weight:600}
+.mbar .mv{font-size:.65rem;color:var(--text);font-weight:600}
+
+/* Explainer */
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.exp-box{padding:18px;background:var(--bg);border-radius:10px;transition:transform .2s,box-shadow .2s;border:1px solid transparent}
+.exp-box:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06);border-color:var(--border)}
+.exp-box h4{font-size:.85rem;color:var(--blue);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.exp-box h4::before{flex-shrink:0;font-size:.85rem}
+.exp-box:nth-child(1) h4::before{content:'\1F6E1'}
+.exp-box:nth-child(2) h4::before{content:'\1F4C5'}
+.exp-box:nth-child(3) h4::before{content:'\23F0'}
+.exp-box:nth-child(4) h4::before{content:'\1F4CD'}
+.exp-box:nth-child(5) h4::before{content:'\1F68C'}
+.exp-box:nth-child(6) h4::before{content:'\1F4B3'}
+.exp-box p{font-size:.8rem;color:var(--muted)}
+.exp-box .hl{color:var(--blue);font-weight:700}
+
+/* How to buy */
+.htb-step{display:flex;gap:12px;padding:14px 8px;border-bottom:1px solid var(--border);border-radius:6px;transition:background .2s}
+.htb-step:hover{background:var(--blue-pale)}
+.htb-step:last-child{border:none}
+.htb-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
+.htb-step p{font-size:.85rem;color:var(--muted)}
+.htb-step strong{color:var(--text)}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:14px 0}
+.faq-item:last-child{border:none}
+.faq-q{font-weight:600;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-radius:6px;padding:6px 8px;min-height:44px;transition:color .2s,background .2s}
+.faq-q:hover{color:var(--blue);background:var(--blue-pale)}
+.faq-q:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--dim);transition:transform .3s cubic-bezier(.4,0,.2,1),color .2s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--blue)}
+.faq-a{font-size:.85rem;color:var(--muted);max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1),padding .3s;padding-top:0}
+.faq-item.open .faq-a{max-height:800px;padding-top:10px}
+
+/* Loan */
+.loan-box{background:var(--blue-pale);border-radius:12px;padding:22px 26px;border:1px solid rgba(0,54,136,.1)}
+.loan-box .lm{font-size:1.6rem;font-weight:800;color:var(--blue)}
+.loan-box p{font-size:.85rem;color:var(--muted);margin-top:6px;line-height:1.6}
+
+/* Go button */
+.go-btn{width:100%;margin-top:22px;padding:16px 24px;background:linear-gradient(135deg,#00782a,#059669);color:#fff;border:none;border-radius:12px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px;box-shadow:0 4px 14px rgba(0,120,42,.3)}
+.go-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,120,42,.4)}
+.go-btn:active{transform:translateY(0);box-shadow:0 2px 8px rgba(0,120,42,.3)}
+.go-btn:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+@keyframes softPulse{0%,100%{box-shadow:0 4px 14px rgba(0,120,42,.3)}50%{box-shadow:0 4px 24px rgba(0,120,42,.45)}}
+#goBtn{animation:softPulse 3s ease-in-out infinite}
+@keyframes dotPulse{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
+#goBtn.loading{background:linear-gradient(135deg,#005e22,#047857)}#goBtn.loading::after{content:'';animation:dotPulse 1.2s steps(1) infinite}
+#goBtn.disabled{opacity:.45;cursor:not-allowed;animation:none;transform:none;pointer-events:none}
+#goBtn.ready{animation:softPulse 2s ease-in-out infinite}
+.go-hint{text-align:center;font-size:.75rem;color:var(--dim);margin-top:6px;height:18px;transition:opacity .3s}
+.go-hint.hidden{opacity:0}
+
+/* Print & Share */
+.action-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0}
+.action-btns .recalc-btn{max-width:400px;margin:0 auto 14px;font-size:.95rem;padding:14px 20px;background:linear-gradient(135deg,var(--blue),var(--blue-l));animation:none}
+.action-btns .reset-btn{border-color:var(--dim);color:var(--dim)}
+.print-btn,.share-btn{display:inline-block;padding:10px 24px;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;transition:.2s}
+.print-btn{background:var(--blue);color:#fff}
+.print-btn:hover{background:var(--blue-l)}
+.print-btn:focus-visible,.share-btn:focus-visible{outline:3px solid var(--blue-l);outline-offset:2px}
+.share-btn{background:var(--card);color:var(--blue);border:2px solid var(--blue)}
+.share-btn:hover{background:var(--blue-pale)}
+.share-btn.copied{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* Break-even */
+.be-svg-wrap{position:relative;height:180px;margin:10px 0}
+.be-svg-wrap svg{width:100%;height:100%}
+.be-legend{display:flex;gap:16px;justify-content:center;margin-top:8px;font-size:.78rem;color:var(--muted)}
+.be-legend span{display:inline-flex;align-items:center;gap:4px}
+.be-legend .dot{width:10px;height:10px;border-radius:2px;display:inline-block}.dot.dot-payg{background:var(--blue)}.dot.dot-pass{background:var(--green)}
+.be-svg-wrap circle{transition:r .15s;cursor:default}.be-svg-wrap circle:hover{r:4}
+.be-crossover{text-align:center;margin-top:10px;font-size:.92rem;font-weight:600;color:var(--blue);padding:10px;background:var(--blue-pale);border-radius:8px}
+
+/* Cycling */
+.cyc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
+.cyc-card{padding:18px 12px;border-radius:10px;border:2px solid var(--border);transition:transform .2s,box-shadow .2s}
+.cyc-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.cyc-card.best-cyc{border-color:var(--green);background:var(--green-bg)}
+.cyc-card .cyc-mode{font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:4px}
+.cyc-card .cyc-price{font-size:1.4rem;font-weight:800}.cyc-card.best-cyc .cyc-price{color:var(--green)}
+.cyc-card .cyc-detail{font-size:.72rem;color:var(--dim);margin-top:4px}
+.cyc-warn{grid-column:1/-1;text-align:center;font-size:.82rem;color:#92400e;background:var(--amber-bg);border:1px solid var(--amber);border-radius:8px;padding:10px 16px;margin-top:8px}
+.cyc-footer{grid-column:1/-1;text-align:center;font-size:.78rem;color:var(--dim);margin-top:8px;line-height:1.6}
+
+/* Autocomplete empty state */
+.acd-empty{padding:14px;text-align:center;font-size:.82rem;color:var(--dim);line-height:1.5}
+
+/* Skip to content (a11y) */
+.skip-link{position:absolute;top:-100px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;padding:10px 20px;border-radius:0 0 8px 8px;z-index:200;font-weight:600;font-size:.88rem;text-decoration:none;transition:top .2s}
+.skip-link:focus{top:0}
+.nojs-msg{background:#fef2f2;color:#dc2626;text-align:center;padding:16px;font-weight:600;font-size:.9rem}
+
+/* Closing CTA */
+.closing-cta{background:linear-gradient(135deg,var(--blue-pale),#dbeafe);border:2px solid rgba(0,54,136,.12);border-radius:var(--r);padding:32px;text-align:center;margin-top:24px}
+.closing-cta h3{color:var(--blue);font-size:1.1rem;margin-bottom:8px}
+.closing-cta p{color:var(--muted);font-size:.88rem;max-width:480px;margin:0 auto;line-height:1.6}
+.closing-cta .cta-step{display:inline-block;margin-top:14px;background:var(--blue);color:#fff;padding:10px 24px;border-radius:10px;font-size:.88rem;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all .2s}
+.closing-cta .cta-step:hover{background:var(--blue-l);transform:translateY(-1px)}
+.closing-cta .cta-step:focus-visible{outline:3px solid var(--blue-l);outline-offset:3px}
+.cta-updated{font-size:.72rem;color:var(--dim);margin-top:12px;opacity:.7}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Switch banner */
+.switch-banner{background:linear-gradient(135deg,var(--blue),var(--blue-l));color:#fff;border-radius:var(--r);padding:24px 28px;margin-bottom:18px;text-align:center;position:relative;overflow:hidden}
+.switch-banner::before{content:'';position:absolute;top:-50%;right:-20%;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%}
+.switch-banner .sw-from{opacity:.75;font-size:.88rem}
+.switch-banner .sw-arrow{font-size:1.5rem;margin:8px 0;opacity:.6}
+.switch-banner .sw-to{font-size:1.05rem;font-weight:600}
+.switch-banner .sw-save{font-size:1.8rem;font-weight:800;margin-top:8px;text-shadow:0 2px 8px rgba(0,0,0,.2)}
+
+/* Counter animation */
+@keyframes countUp{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.count-anim{animation:countUp .4s ease-out}
+
+/* Table scroll hint (mobile) */
+.table-wrap{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.table-wrap::-webkit-scrollbar{height:4px}.table-wrap::-webkit-scrollbar-track{background:transparent}.table-wrap::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.table-wrap::after{content:'Scroll →';position:absolute;top:0;right:0;background:linear-gradient(90deg,transparent,var(--card) 40%);padding:9px 10px 9px 28px;font-size:.65rem;color:var(--dim);font-weight:600;pointer-events:none;display:none}
+@media(max-width:640px){.table-wrap::after{display:block}}
+.table-wrap.scrolled::after{display:none}
+
+/* Back to top */
+.btt{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:all .25s;z-index:50}
+.btt:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.btt.show{display:flex}
+
+/* Section divider */
+.sdiv{border:none;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:8px 0}
+
+/* Utility classes */
+.sub-desc{font-size:.85rem;color:var(--muted);margin-bottom:14px}
+.sub-desc-sm{font-size:.85rem;color:var(--muted);margin-bottom:4px}.teaser .sub-desc-sm{margin-top:6px}
+.mbar-label{font-size:.78rem;color:var(--dim);text-align:center}
+.wfh-save{text-align:center;margin-top:12px;font-size:.85rem;color:var(--green);font-weight:600;padding:10px 16px;background:var(--green-bg);border-radius:8px;border:1px solid var(--green)}
+.kb-hint{text-align:center;font-size:.65rem;color:var(--dim);margin-top:2px;opacity:.6}
+.results-shell{padding:0;background:transparent;box-shadow:none}.results-shell:hover{transform:none;box-shadow:none}
+.results .section:hover{transform:none;box-shadow:var(--shadow)}
+.results .section{scroll-margin-top:16px}
+
+footer{text-align:center;padding:40px 20px 48px;font-size:.78rem;color:var(--dim);border-top:1px solid var(--border);margin-top:20px}
+footer a{color:var(--blue);text-decoration:none}
+footer a:hover{text-decoration:underline}
+footer .ft-title{font-weight:600;color:var(--muted);margin-bottom:8px;font-size:.88rem}
+footer .ft-meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:10px;font-size:.78rem}
+footer .ft-privacy{margin-top:10px;font-size:.72rem;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:6px}
+footer .ft-privacy .lock{font-size:.85rem}
+
+@media(prefers-color-scheme:dark){
+:root{--bg:#121417;--card:#1a1d23;--text:#e4e4e7;--muted:#a1a1aa;--dim:#8a8a93;--hint:#8a8a93;
+--border:#2e3038;--shadow:0 2px 16px rgba(0,0,0,0.3);--blue:#4d8fda;--blue-l:#5fa0e8;--blue-pale:#1a2236;
+--green:#34d399;--green-bg:#0f2a1f;--red:#f87171;--amber:#fbbf24;--amber-bg:#2a2010}
+::selection{background:#1e3a5f;color:#93c5fd}
+body{color-scheme:dark}
+.si{background:#22252b;color:var(--text);border-color:var(--border)}
+.si:hover:not(:focus){border-color:#464a54}
+.si.ok{background:#0f2a1f;border-color:var(--green)}
+.si::placeholder{color:#555}
+.si:focus{box-shadow:0 0 0 3px rgba(77,143,218,.2)}
+.acd{background:#22252b;border-color:var(--blue);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+header{background:linear-gradient(135deg,#0a1628 0%,#0f2040 50%,#162d54 100%)}
+.badge{background:rgba(255,255,255,.08)}
+.section:hover{box-shadow:0 4px 24px rgba(0,0,0,.25)}
+.jbar{border-color:rgba(77,143,218,.15)}
+.jerr{color:#fbbf24}
+.ocard{border-color:var(--border)}
+.ocard:hover{box-shadow:0 8px 30px rgba(0,0,0,.25),inset 4px 0 0 var(--blue)}
+.ocard.best:hover{box-shadow:0 8px 30px rgba(0,0,0,.25),inset 4px 0 0 var(--green)}
+.cd.ex{background:#2a1515;color:#f87171}
+.reco{background:linear-gradient(135deg,#0d3320,#0f4a2e)}
+.switch-banner{background:linear-gradient(135deg,#0f2040,#162d54)}
+.bt tr.best:hover td{background:#153025}
+.tip.green h4{color:var(--green)}
+.tip.amber h4{color:var(--amber)}
+.exp-box{border-color:var(--border)}.exp-box:hover{border-color:#464a54}
+.fs:hover{box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.cyc-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.cyc-warn{color:var(--amber)}
+.loan-box{border-color:rgba(77,143,218,.15)}
+.closing-cta{background:linear-gradient(135deg,var(--blue-pale),#1a2236);border-color:rgba(77,143,218,.15)}
+.go-btn{box-shadow:0 4px 14px rgba(52,211,153,.2)}
+.go-btn:hover{box-shadow:0 6px 20px rgba(52,211,153,.3)}
+@keyframes softPulse{0%,100%{box-shadow:0 4px 14px rgba(52,211,153,.2)}50%{box-shadow:0 4px 24px rgba(52,211,153,.35)}}
+.btt{box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.nojs-msg{background:#2a1515;color:#f87171}
+.wb-cur .wl{color:var(--blue)}.you{background:var(--blue)}
+.tb.pk{background:#2a1515}
+select.si{background:var(--card)}
+select.si option{background:var(--card);color:var(--text)}
+.si[type="time"]{color:var(--text)}
+.si[type="time"]::-webkit-calendar-picker-indicator{filter:invert(1) brightness(.8)}
+.si[type="number"]{color:var(--text)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.teaser .t-icon{animation:none!important}#goBtn{animation:none!important}}
+@media(prefers-contrast:more){:root{--border:#999;--muted:#333;--dim:#444;--hint:#444;--shadow:0 2px 8px rgba(0,0,0,.2)}.si{border-width:3px}.ocard{border-width:3px}.ocard.best{border-width:3px}.tip{border-width:3px}.section{box-shadow:0 0 0 1px var(--border)}.faq-q::after{font-weight:900}.reco{background:#00782a}.go-btn{box-shadow:0 0 0 2px #004d1a}.zd{box-shadow:0 0 0 2px rgba(0,0,0,.3)}}
+@media(prefers-color-scheme:dark) and (prefers-contrast:more){:root{--border:#666;--muted:#ccc;--dim:#aaa;--hint:#aaa}}
+@media print{
+:root{--bg:#fff!important;--card:#fff!important;--text:#1d1d1b!important;--muted:#555!important;--dim:#767676!important;--border:#dde1e6!important;--blue:#003688!important;--blue-l:#0053a0!important;--blue-pale:#eef2ff!important;--green:#00782a!important;--green-bg:#e8f5e9!important;--red:#e1251b!important;--amber:#f59e0b!important;--amber-bg:#fffbeb!important;--hint:#717171!important}
+*{animation:none!important;transition:none!important;color-scheme:light!important}body{background:#fff!important;color:#1d1d1b!important}header{padding:20px 0;background:#003688!important}header::after{display:none}.section{box-shadow:none;border:1px solid #ddd;break-inside:avoid;page-break-inside:avoid;background:#fff!important}.action-btns{display:none!important}.go-btn{display:none!important}.go-hint{display:none!important}.kb-hint{display:none!important}.reveal{opacity:1!important;transform:none!important}.progress{display:none}.teaser{display:none!important}.btt{display:none!important}.closing-cta .cta-step{display:none}.cta-updated{display:none}.skip-link{display:none}.sdiv{display:none}#driveSection{display:none!important}#cycSection{display:none!important}#beSection{display:none!important}#switchBanner{display:none!important}.jbar{max-height:none;opacity:1;overflow:visible}noscript{display:none}.ocard{transform:none!important;box-shadow:none!important;background:#fff!important;border:1px solid #ddd!important}.ocard.best{background:#e8f5e9!important;border-color:#00782a!important}.reco{background:#00782a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.bt td,.bt th{background:#fff!important}.bt tr.best td{background:#e8f5e9!important}#faq{page-break-before:always}.results .section+.section{margin-top:16px}footer::after{content:'Calculated at london-commute-optimizer \2014 verify at tfl.gov.uk/fares';display:block;margin-top:8px;font-style:italic;font-size:.7rem}}
+@media(max-width:900px) and (min-width:641px){
+.srow{gap:8px}
+.section{padding:24px 22px}
+header h1{font-size:1.8rem}
+}
+@media(max-width:640px){
+header h1{font-size:1.4rem}header p{font-size:.92rem}
+.srow{grid-template-columns:1fr}.swap{margin:0 auto;transform:rotate(90deg)}.swap.clicked{transform:rotate(270deg)}.swap:hover{transform:rotate(270deg)}
+.g2,.g-cards,.exp-grid{grid-template-columns:1fr}
+.fsg{grid-template-columns:1fr 1fr}.fsg .fs .d{font-size:.78rem}.cyc-grid{grid-template-columns:1fr}
+.section{padding:20px 16px}.reco .big{font-size:1.6rem}
+.ocard{padding:16px}.ocard .ca{font-size:1.3rem}.ocard .cn{font-size:.78rem}
+.dcomp{grid-template-columns:1fr}.dcomp .vs-badge{margin:0 auto}
+.action-btns{flex-direction:column}
+.switch-banner{padding:18px 16px}.switch-banner .sw-save{font-size:1.4rem}.switch-banner .sw-from{font-size:.8rem}.switch-banner .sw-to{font-size:.92rem}
+.si{padding:14px;font-size:1.05rem}.go-btn{padding:18px 24px;font-size:1.15rem}select.si{min-height:48px}
+.bt{font-size:.75rem}.bt th{padding:6px 5px;font-size:.65rem}.bt td{padding:7px 5px}
+.mbar{height:100px}.mbar .mv{font-size:.55rem}.mbar .ml{font-size:.55rem}
+.wb .wl{font-size:.72rem;width:62px}.wb .b{font-size:.62rem;padding-left:6px}.you{font-size:.52rem;padding:1px 4px}
+.tip{padding:14px 16px}.tip h4{font-size:.82rem}.tip p{font-size:.78rem}
+.sec-desc{font-size:.82rem}
+.aci{padding:13px 14px;min-height:44px}
+.jbar{padding:10px 14px;font-size:.8rem}.fprev{font-size:.78rem}
+.progress{gap:0;margin:14px 0 0}.pstep{font-size:.65rem}.pstep .pnum{width:20px;height:20px;font-size:.6rem}.pline{width:20px;margin:0 4px}
+.trust{gap:16px;padding:14px 0 0}.trust-item{font-size:.7rem}.trust-item .ti{font-size:.9rem}
+.teaser{padding:24px 16px}.teaser .t-icon{font-size:1.3rem}.teaser p{font-size:.82rem}
+.closing-cta{padding:24px 16px}.closing-cta h3{font-size:1rem}.closing-cta p{font-size:.82rem}
+.btt{bottom:16px;right:16px;width:44px;height:44px;font-size:1rem}
+.kb-hint{display:none}
+}
+</style>
+</head>
+<body>
+<a href="#fromStation" class="skip-link">Skip to journey planner</a>
+<noscript><div class="nojs-msg">This tool requires JavaScript to work. Please enable JavaScript in your browser settings and reload the page.</div></noscript>
+<header><div class="wrap">
+<h1>Are you overpaying for your London commute?</h1>
+<p>Most Londoners pay more than they need to. Tell us your journey and we'll find your cheapest option in under 60 seconds.</p>
+<div class="badge">Official TfL fares (March 2026) &middot; 400+ stations &middot; Works offline</div>
+<div class="trust">
+<div class="trust-item"><span class="ti">&#10003;</span>100% private</div>
+<div class="trust-item"><span class="ti">&#10003;</span>Instant results</div>
+<div class="trust-item"><span class="ti">&#10003;</span>No subscription</div>
+</div>
+</div></header>
+
+<main class="wrap">
+
+<!-- PROGRESS -->
+<nav class="progress" id="progress" aria-label="Progress">
+<div class="pstep active" id="ps1"><span class="pnum">1</span>Your journey</div>
+<div class="pline" id="pl1"></div>
+<div class="pstep" id="ps2"><span class="pnum">2</span>Your details</div>
+<div class="pline" id="pl2"></div>
+<div class="pstep" id="ps3"><span class="pnum">3</span>Results</div>
+</nav>
+
+<!-- STEP 1 -->
+<section class="section hero">
+<h2><span class="num">1</span>Your journey</h2>
+<p class="sec-desc">Start typing and pick your station from the list — we'll handle the zones.</p>
+<div class="srow">
+<div class="fg"><label for="fromStation">I travel from</label><input type="text" class="si" id="fromStation" placeholder="e.g. Watford, Brixton, Stratford..." autocomplete="off" spellcheck="false" aria-label="Departure station" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="fromDD"><div class="acd" id="fromDD" role="listbox"></div></div>
+<button type="button" class="swap" id="swapBtn" title="Swap stations" aria-label="Swap departure and arrival stations">&#8644;</button>
+<div class="fg"><label for="toStation">I travel to</label><input type="text" class="si" id="toStation" placeholder="e.g. Oxford Circus, Bank, Canary Wharf..." autocomplete="off" spellcheck="false" aria-label="Arrival station" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-owns="toDD"><div class="acd" id="toDD" role="listbox"></div></div>
+</div>
+<div class="jbar" id="jbar"><div class="zvis" id="zvis" aria-label="Zones traversed"></div><div class="fprev" id="fprev"></div></div>
+<div class="jerr" id="jerr" role="alert"></div>
+</section>
+
+<!-- STEP 2 -->
+<section class="section">
+<h2><span class="num">2</span>About your commute</h2>
+<p class="sec-desc">Rough answers are fine — we just need your typical week.</p>
+<div class="g2">
+<div class="fg"><label for="days">How many days do you commute?</label><select class="si" id="days"><option value="1">1 day a week</option><option value="2">2 days a week</option><option value="3">3 days a week</option><option value="4">4 days a week</option><option value="5" selected>5 days a week (full time)</option><option value="6">6 days a week</option><option value="7">7 days a week</option></select></div>
+<div class="fg"><label for="trips">Tube/train trips each day</label><select class="si" id="trips" aria-describedby="tripsHint"><option value="1">1 — I only go one way</option><option value="2" selected>2 — there and back</option><option value="3">3 — midday trip too</option><option value="4">4+ — multiple trips daily</option></select><span class="hint" id="tripsHint">Most people do 2 (one each way)</span></div>
+<div class="fg"><label for="dept">What time do you leave home? <span class="tb" id="mInd" aria-hidden="true"></span></label><input type="time" class="si" id="dept" value="08:00" aria-describedby="deptHint"><span class="hint" id="deptHint">This affects your fare — travel before 9:30am costs more</span></div>
+<div class="fg"><label for="ret">What time do you head home? <span class="tb" id="eInd" aria-hidden="true"></span></label><input type="time" class="si" id="ret" value="17:30" aria-describedby="retHint"><span class="hint" id="retHint">Leaving after 7pm is cheaper (off-peak)</span></div>
+<div class="fg"><label for="bus">Do you also take buses?</label><select class="si" id="bus" aria-describedby="busHint"><option value="0" selected>No, I don't take buses</option><option value="2">A couple of times a week</option><option value="4">A few times a week</option><option value="6">About once a day</option><option value="10">Most days, both ways</option><option value="14">Every day plus extras</option><option value="20">I'm on buses constantly</option></select><span class="hint" id="busHint">Buses have their own fares but can be included in your ticket</span></div>
+<div class="fg"><label for="leave">How much annual leave do you get?</label><input type="number" class="si" id="leave" value="5.6" min="0" max="15" step="0.1" aria-describedby="leaveHint"><span class="hint" id="leaveHint">The UK minimum is 5.6 weeks. This matters because you don't commute on holiday!</span></div>
+<div class="fg"><label for="rc">Do you have a Railcard?</label><select class="si" id="rc" aria-describedby="rcHint"><option value="none" selected>No</option><option value="16-25">Yes — 16-25 Railcard</option><option value="26-30">Yes — 26-30 Railcard</option></select><span class="hint" id="rcHint">A Railcard is a £30/year card that gives you 1/3 off. We'll tell you if it's worth getting one.</span></div>
+<div class="fg"><label for="sal">Your salary (optional, stays private)</label><input type="number" class="si" id="sal" placeholder="e.g. 28000" min="0" step="1000" autocomplete="off" aria-describedby="salHint"><span class="hint" id="salHint">We'll show what % of your pay goes on commuting. Nothing is stored or sent anywhere.</span></div>
+<div class="fg full"><label for="curMethod">How do you currently pay for travel?</label><select class="si" id="curMethod" aria-describedby="curMethodHint"><option value="unknown" selected>I'm not sure / still figuring it out</option><option value="payg">I just tap my bank card or phone</option><option value="payg_rc">I use an Oyster card with a Railcard</option><option value="tc_w">I buy a weekly travel pass</option><option value="tc_m">I buy a monthly travel pass</option><option value="tc_a">I have an annual travel pass</option><option value="driving">I drive to work</option></select><span class="hint" id="curMethodHint">This helps us show exactly how much you'd save by switching to the best option</span></div>
+</div>
+<button type="button" class="go-btn disabled" id="goBtn" aria-label="Calculate cheapest commute option">Show me the cheapest way to commute</button>
+<div class="go-hint" id="goHint">Pick your departure and arrival stations above to get started</div>
+<div class="kb-hint">or press Ctrl+Enter</div>
+</section>
+
+<!-- TEASER -->
+<div class="section teaser" id="teaser">
+<span class="t-icon">&#9660;</span>
+<p><strong>Your personalised breakdown will appear here</strong></p>
+<p class="sub-desc-sm">Pick your stations, tweak your details, and hit the green button.</p>
+</div>
+
+<!-- RESULTS -->
+<div class="results" id="res" aria-live="polite">
+
+<div id="switchBanner" style="display:none"></div>
+
+<section class="section reveal results-shell">
+<div class="reco" id="reco" role="status" tabindex="-1"></div>
+<div class="g-cards" id="oGrid"></div>
+</section>
+
+<div id="timeTip"></div>
+<div id="rcTip"></div>
+
+<section class="section reveal">
+<h2>Full cost breakdown</h2>
+<div class="table-wrap" id="tableWrap"><table class="bt"><thead><tr><th scope="col">Option</th><th scope="col">Per Trip</th><th scope="col">Daily</th><th scope="col">Weekly</th><th scope="col">Monthly</th><th scope="col">Annual</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</section>
+
+<section class="section reveal">
+<h2>Ways to save even more</h2>
+<div id="tips"></div>
+</section>
+
+<hr class="sdiv">
+
+<section class="section reveal">
+<h2>What if you worked from home more often?</h2>
+<p class="sub-desc">Even one fewer day makes a real difference. Here's how your annual cost changes.</p>
+<div id="wfhBars"></div>
+</section>
+
+<section class="section reveal" id="beSection" style="display:none">
+<h2>When does a travel pass start saving you money?</h2>
+<p class="sub-desc-sm">This chart shows where pay-as-you-go and a weekly pass cross over.</p>
+<div id="beChart"></div>
+<div id="beCrossover"></div>
+</section>
+
+<section class="section reveal" id="driveSection" style="display:none">
+<h2>Is driving actually cheaper?</h2>
+<p class="sub-desc-sm">London parking and the congestion charge add up fast. Here's a rough comparison.</p>
+<div class="dcomp" id="dComp"></div>
+<span class="hint">Driving estimate: fuel at £1.45/litre, 35mpg average, congestion charge £15/day (Mon-Fri 7am-6pm, Zone 1 only), average London parking £12/day. Your actual costs may vary.</span>
+</section>
+
+<section class="section reveal" id="cycSection" style="display:none">
+<h2>Could you cycle instead?</h2>
+<p class="sub-desc">If your commute is bikeable, cycling is significantly cheaper — and healthier.</p>
+<div class="cyc-grid" id="cycGrid"></div>
+</section>
+
+<section class="section reveal">
+<h2>What you'll spend each month</h2>
+<p class="sub-desc-sm">Here's what to budget each month. Lighter months have more bank holidays.</p>
+<div class="mbar" id="mbar" role="img" aria-label="Monthly commute cost bar chart"></div>
+<div id="mbarLabel" class="mbar-label"></div>
+</section>
+
+<section class="section reveal" id="loanSec" style="display:none">
+<h2>Can your employer help pay for this?</h2>
+<p class="sub-desc">Many employers offer <strong>interest-free season ticket loans</strong> — you pay nothing upfront and it comes out of your salary each month. Definitely worth asking about.</p>
+<div class="loan-box" id="loanBox"></div>
+</section>
+
+<hr class="sdiv">
+
+<section class="section reveal">
+<h2>Your commute in numbers</h2>
+<div class="fsg" id="fstats"></div>
+</section>
+
+<hr class="sdiv">
+
+<!-- EDUCATION -->
+<section class="section reveal">
+<h2>How London fares actually work</h2>
+<p class="sub-desc">No jargon — just the bits that affect your wallet.</p>
+<div class="exp-grid">
+<div class="exp-box"><h4>Daily capping</h4><p>On contactless or Oyster, there's a <span class="hl">maximum you'll pay per day</span> — no matter how many trips. Once you hit it, extra journeys are free. The cap depends on which zones you travel through.</p></div>
+<div class="exp-box"><h4>Weekly capping</h4><p><span class="hl">Contactless only</span> (not Oyster) automatically caps your spending Mon-Sun. This matches the cost of a weekly travel pass — but you don't need to buy one. If you travel less, you pay less.</p></div>
+<div class="exp-box"><h4>Peak vs Off-Peak</h4><p>Peak = Mon-Fri <span class="hl">6:30-9:30am</span> and <span class="hl">4:00-7:00pm</span>. Off-peak is everything else (including weekends and bank holidays). Off-peak fares are 15-35% cheaper.</p></div>
+<div class="exp-box"><h4>Boundary stations</h4><p>Some stations sit on <span class="hl">two zones</span> (e.g. Stratford is Zone 2/3). TfL automatically charges you whichever zone gives the <span class="hl">cheapest fare</span>. You don't need to do anything.</p></div>
+<div class="exp-box"><h4>Bus capping</h4><p>Buses have a <span class="hl">separate daily cap of £5.25</span> and weekly cap of £24.70. But the contactless weekly cap <span class="hl">includes bus travel</span> — once you hit the zone-based weekly cap, buses are free.</p></div>
+<div class="exp-box"><h4>Railcard on Oyster</h4><p>Link a railcard to your <span class="hl">Oyster</span> (not contactless) for 1/3 off off-peak fares and reduced daily caps. But Oyster has <span class="hl">no weekly capping</span> — so it only wins if you travel off-peak.</p></div>
+</div>
+</section>
+
+<section class="section reveal">
+<h2>How to set this up (step by step)</h2>
+<div id="htbSteps"></div>
+</section>
+
+<section class="section reveal">
+<h2>Common questions</h2>
+<div id="faq"></div>
+</section>
+
+<div class="closing-cta reveal" id="closingCta">
+<h3>You're all set</h3>
+<p id="closingText">Now you know the cheapest way to commute. Save this page, or print it to keep your results handy.</p>
+<button type="button" class="cta-step" id="ctaPrint">Save as PDF</button>
+<p class="cta-updated">Fare data verified against TfL as of March 2026. Works offline — no internet needed.</p>
+</div>
+
+<div class="action-btns">
+<button type="button" class="go-btn recalc-btn" id="recalcBtn" aria-label="Change my details and recalculate">&#8593; Change my details and recalculate</button>
+<button type="button" class="print-btn" id="printBtn" aria-label="Print results or save as PDF">Print / Save as PDF</button>
+<button type="button" class="share-btn" id="shareBtn" aria-label="Copy results to clipboard">Copy results to clipboard</button>
+<button type="button" class="share-btn reset-btn" id="resetBtn" aria-label="Clear all inputs and start over">Start over</button>
+</div>
+
+</div><!-- /results -->
+</main>
+
+<button type="button" class="btt" id="btt" aria-label="Back to top">&#8593;</button>
+
+<footer><div class="wrap">
+<p class="ft-title">London Commute Cost Optimizer</p>
+<div class="ft-meta">
+<span>Fare data: TfL March 2026</span>
+<span>Caps reset: daily 04:30 / weekly Mon 04:30</span>
+<span>v2.0 &middot; Single-file, works offline</span>
+</div>
+<p>Always verify at <a href="https://tfl.gov.uk/fares" target="_blank" rel="noopener">tfl.gov.uk/fares</a> before purchasing.</p>
+<p class="ft-privacy"><span class="lock">&#128274;</span> 100% private — runs entirely in your browser. No data collected, stored, or sent anywhere.</p>
+</div></footer>
+
+<script>
+// ── STATIONS ──
+const ST={
+// Z1
+"Aldgate":1,"Aldgate East":1,"Angel":1,"Baker Street":1,"Bank":1,"Barbican":1,"Battersea Power Station":1,"Bayswater":1,"Blackfriars":1,"Bond Street":1,"Borough":1,"Cannon Street":1,"Chancery Lane":1,"Charing Cross":1,"Covent Garden":1,"Edgware Road (Bakerloo)":1,"Edgware Road (Circle)":1,"Embankment":1,"Euston":1,"Euston Square":1,"Farringdon":1,"Gloucester Road":1,"Goodge Street":1,"Great Portland Street":1,"Green Park":1,"High Street Kensington":1,"Holborn":1,"Hyde Park Corner":1,"Kennington":1,"King's Cross St Pancras":1,"Knightsbridge":1,"Lambeth North":1,"Lancaster Gate":1,"Leicester Square":1,"Liverpool Street":1,"London Bridge":1,"Mansion House":1,"Marble Arch":1,"Marylebone":1,"Monument":1,"Moorgate":1,"Nine Elms":1,"Notting Hill Gate":1,"Old Street":1,"Oxford Circus":1,"Paddington":1,"Piccadilly Circus":1,"Pimlico":1,"Queensway":1,"Regent's Park":1,"Russell Square":1,"Sloane Square":1,"South Kensington":1,"Southwark":1,"St James's Park":1,"St Paul's":1,"Temple":1,"Tottenham Court Road":1,"Tower Gateway":1,"Tower Hill":1,"Vauxhall":1,"Victoria":1,"Warren Street":1,"Waterloo":1,"Westminster":1,
+// Z1/2
+"Hoxton":[1,2],"Shoreditch High Street":[1,2],"Earl's Court":[1,2],"Elephant & Castle":[1,2],
+// Z2
+"Arsenal":2,"Barons Court":2,"Belsize Park":2,"Bermondsey":2,"Bethnal Green":2,"Bow Road":2,"Brixton":2,"Caledonian Road":2,"Camden Town":2,"Canada Water":2,"Canary Wharf":2,"Chalk Farm":2,"Clapham Common":2,"Clapham North":2,"East Acton":2,"Finchley Road":2,"Finsbury Park":2,"Fulham Broadway":2,"Goldhawk Road":2,"Hammersmith":2,"Highbury & Islington":2,"Holland Park":2,"Holloway Road":2,"Kensal Green":2,"Kentish Town":2,"Kilburn":2,"Kilburn Park":2,"Ladbroke Grove":2,"Latimer Road":2,"Maida Vale":2,"Mile End":2,"Mornington Crescent":2,"North Acton":2,"Oval":2,"Parsons Green":2,"Putney Bridge":2,"Queen's Park":2,"Ravenscourt Park":2,"Royal Oak":2,"St John's Wood":2,"Shepherd's Bush":2,"Shepherd's Bush Market":2,"Stamford Brook":2,"Stepney Green":2,"Stockwell":2,"Swiss Cottage":2,"Tufnell Park":2,"Warwick Avenue":2,"West Brompton":2,"West Hampstead":2,"West Kensington":2,"Westbourne Park":2,"Whitechapel":2,"White City":2,"Willesden Green":2,"Wood Lane":2,"All Saints":2,"Blackwall":2,"Bow Church":2,"Crossharbour":2,"Devons Road":2,"Heron Quays":2,"Island Gardens":2,"Langdon Park":2,"Limehouse":2,"Mudchute":2,"Poplar":2,"South Quay":2,"West India Quay":2,"Westferry":2,"Brondesbury":2,"Brondesbury Park":2,"Brockley":2,"Caledonian Road & Barnsbury":2,"Cambridge Heath":2,"Camden Road":2,"Canonbury":2,"Clapham High Street":2,"Clapham Junction":2,"Dalston Junction":2,"Dalston Kingsland":2,"Denmark Hill":2,"Drayton Park":2,"Finchley Road & Frognal":2,"Gospel Oak":2,"Hackney Central":2,"Hackney Downs":2,"Hackney Wick":2,"Haggerston":2,"Hampstead Heath":2,"Homerton":2,"Imperial Wharf":2,"Kensington Olympia":2,"Kensal Rise":2,"Kentish Town West":2,"Kilburn High Road":2,"London Fields":2,"New Cross Gate":2,"Peckham Rye":2,"Queens Road Peckham":2,"Rectory Road":2,"Rotherhithe":2,"Shadwell":2,"South Hampstead":2,"Stoke Newington":2,"Surrey Quays":2,"Upper Holloway":2,"Wapping":2,"Wandsworth Road":2,
+// Z2/3
+"Turnham Green":[2,3],"Manor House":[2,3],"Archway":[2,3],"Bromley-by-Bow":[2,3],"Clapham South":[2,3],"East Putney":[2,3],"Hampstead":[2,3],"Willesden Junction":[2,3],"Abbey Road":[2,3],"Canning Town":[2,3],"Cutty Sark":[2,3],"Deptford Bridge":[2,3],"East India":[2,3],"Elverson Road":[2,3],"Greenwich":[2,3],"Lewisham":[2,3],"Pudding Mill Lane":[2,3],"Star Lane":[2,3],"Stratford High Street":[2,3],"Clapton":[2,3],"North Greenwich":[2,3],
+// Z3
+"Acton Town":3,"Balham":3,"Blackhorse Road":3,"Brent Cross":3,"Chiswick Park":3,"Colliers Wood":3,"Dollis Hill":3,"Ealing Broadway":3,"Ealing Common":3,"East Finchley":3,"Golders Green":3,"Gunnersbury":3,"Hanger Lane":3,"Harlesden":3,"Highgate":3,"Leyton":3,"Neasden":3,"North Ealing":3,"Northfields":3,"Park Royal":3,"Plaistow":3,"Seven Sisters":3,"South Ealing":3,"Southfields":3,"Stonebridge Park":3,"Tooting Bec":3,"Tooting Broadway":3,"Turnpike Lane":3,"Upton Park":3,"Walthamstow Central":3,"West Acton":3,"Wimbledon":3,"Wimbledon Park":3,"Wood Green":3,"Beckton":3,"Beckton Park":3,"Custom House":3,"Cyprus":3,"Gallions Reach":3,"King George V":3,"London City Airport":3,"Pontoon Dock":3,"Prince Regent":3,"Royal Albert":3,"Royal Victoria":3,"Acton Main Line":3,"Forest Gate":3,"Maryland":3,"West Ealing":3,"Acton Central":3,"Alexandra Palace":3,"Bruce Grove":3,"Crouch Hill":3,"Forest Hill":3,"Harringay Green Lanes":3,"Honor Oak Park":3,"Leyton Midland Road":3,"Leytonstone High Road":3,"South Tottenham":3,"St James Street":3,"Sydenham":3,"Walthamstow Queens Road":3,"Wanstead Park":3,"Tottenham Hale":3,
+// Z3/4
+"Stratford":[2,3],"West Ham":[2,3],"South Wimbledon":[3,4],"Richmond":[3,4],"Kew Gardens":[3,4],"Manor Park":[3,4],"Bounds Green":[3,4],"East Ham":[3,4],"Hendon Central":[3,4],"Leytonstone":[3,4],"Crystal Palace":[3,4],"Woodgrange Park":[3,4],
+// Z4
+"Alperton":4,"Arnos Grove":4,"Barking":4,"Barkingside":4,"Boston Manor":4,"Burnt Oak":4,"Chigwell":4,"Colindale":4,"Fairlop":4,"Finchley Central":4,"Gants Hill":4,"Grange Hill":4,"Greenford":4,"Hainault":4,"Hounslow Central":4,"Hounslow East":4,"Kenton":4,"Kingsbury":4,"Mill Hill East":4,"Morden":4,"Newbury Park":4,"North Wembley":4,"Northwick Park":4,"Osterley":4,"Perivale":4,"Preston Road":4,"Queensbury":4,"Redbridge":4,"Roding Valley":4,"South Kenton":4,"South Woodford":4,"Southgate":4,"Sudbury Hill":4,"Sudbury Town":4,"Totteridge & Whetstone":4,"Upney":4,"Wanstead":4,"Wembley Central":4,"Wembley Park":4,"West Finchley":4,"Woodford":4,"Woodside Park":4,"Snaresbrook":4,"Abbey Wood":4,"Goodmayes":4,"Hanwell":4,"Ilford":4,"Seven Kings":4,"Southall":4,"Woolwich":4,"Woolwich Arsenal":4,"Barking Riverside":4,"Edmonton Green":4,"Highams Park":4,"Norwood Junction":4,"Silver Street":4,"Wood Street":4,"Anerley":4,"Penge West":4,
+// Z4/5
+"Upminster Bridge":[4,5],
+// Z5
+"Becontree":5,"Buckhurst Hill":5,"Canons Park":5,"Cockfosters":5,"Dagenham East":5,"Dagenham Heathway":5,"Eastcote":5,"Edgware":5,"Harrow & Wealdstone":5,"Harrow-on-the-Hill":5,"High Barnet":5,"Hounslow West":5,"North Harrow":5,"Northolt":5,"Oakwood":5,"Pinner":5,"Rayners Lane":5,"Ruislip Gardens":5,"South Harrow":5,"South Ruislip":5,"Stanmore":5,"West Harrow":5,"Chadwell Heath":5,"Hayes & Harlington":5,"Bush Hill Park":5,"Chingford":5,"Enfield Town":5,"Headstone Lane":5,"Southbury":5,"West Croydon":5,
+// Z5/6
+"Upminster":[5,6],"Hatton Cross":[5,6],
+// Z6
+"Debden":6,"Elm Park":6,"Epping":6,"Hillingdon":6,"Hornchurch":6,"Ickenham":6,"Loughton":6,"Moor Park":6,"Northwood":6,"Northwood Hills":6,"Ruislip":6,"Ruislip Manor":6,"Uxbridge":6,"West Ruislip":6,"Heathrow Terminals 2 & 3":6,"Heathrow Terminal 4":6,"Heathrow Terminal 5":6,"Theydon Bois":6,"Gidea Park":6,"Harold Wood":6,"Romford":6,"West Drayton":6,"Emerson Park":6,"Hatch End":6,"Turkey Street":6,
+// Z7+
+"Croxley":7,"Rickmansworth":7,"Chorleywood":7,"Watford":7,"Chalfont & Latimer":8,"Chesham":9,"Amersham":9,"Carpenders Park":7,"Bushey":8,"Watford High Street":8,"Watford Junction":8,"Cheshunt":8
+};
+
+// ── ALIASES ──
+const ALIASES={"watford metropolitan":"Watford","watford met":"Watford","kings cross":"King's Cross St Pancras","king's cross":"King's Cross St Pancras","st pancras":"King's Cross St Pancras","kgx":"King's Cross St Pancras","heathrow":"Heathrow Terminals 2 & 3","lhr":"Heathrow Terminals 2 & 3","heathrow airport":"Heathrow Terminals 2 & 3","highbury":"Highbury & Islington","highbury and islington":"Highbury & Islington","high st ken":"High Street Kensington","high street ken":"High Street Kensington","edgware road":"Edgware Road (Bakerloo)","tcr":"Tottenham Court Road","tottenham ct rd":"Tottenham Court Road","canary whf":"Canary Wharf","met line watford":"Watford","shepherd's bush":"Shepherd's Bush","shepherds bush":"Shepherd's Bush","watford tube":"Watford","watford underground":"Watford","elephant":"Elephant & Castle","elephant and castle":"Elephant & Castle","earls court":"Earl's Court","earl's court":"Earl's Court","the city":"Bank","city of london":"Bank","shoreditch":"Shoreditch High Street","stratford international":"Stratford","paddington station":"Paddington","victoria station":"Victoria","euston station":"Euston","waterloo station":"Waterloo","london bridge station":"London Bridge","liverpool st":"Liverpool Street","liverpool street station":"Liverpool Street","clapham":"Clapham Common","brixton station":"Brixton","camden":"Camden Town","greenwich station":"Greenwich","wimbledon station":"Wimbledon","richmond station":"Richmond","ealing":"Ealing Broadway","harrow":"Harrow-on-the-Hill","wembley":"Wembley Park","barking station":"Barking","tottenham":"Tottenham Hale","wood green station":"Wood Green","finsbury":"Finsbury Park","seven sisters station":"Seven Sisters","uxbridge station":"Uxbridge","edgware station":"Edgware","morden station":"Morden","epping station":"Epping","amersham station":"Amersham","chesham station":"Chesham"};
+
+// ── FARES ──
+const F={
+single:{
+"1":{p:3.10,o:3.00},"1-2":{p:3.60,o:3.10},"1-3":{p:3.90,o:3.30},"1-4":{p:4.80,o:3.60},"1-5":{p:5.30,o:3.80},"1-6":{p:5.90,o:4.00},"1-7":{p:7.70,o:5.30},"1-8":{p:9.10,o:5.80},"1-9":{p:10.30,o:6.50},
+"2":{p:2.30,o:2.20},"2-3":{p:2.50,o:2.30},"2-4":{p:3.20,o:2.40},"2-5":{p:3.40,o:2.50},"2-6":{p:3.80,o:2.60},"2-7":{p:5.30,o:3.70},"2-8":{p:6.40,o:4.30},"2-9":{p:7.50,o:5.00},
+"3":{p:2.30,o:2.20},"3-4":{p:2.50,o:2.30},"3-5":{p:3.20,o:2.40},"3-6":{p:3.40,o:2.50},"3-7":{p:4.80,o:3.20},"3-8":{p:5.80,o:3.90},"3-9":{p:6.80,o:4.50},
+"4":{p:2.10,o:2.20},"4-5":{p:2.30,o:2.30},"4-6":{p:3.20,o:2.40},"4-7":{p:4.30,o:2.90},"4-8":{p:5.30,o:3.50},"4-9":{p:6.30,o:4.10},
+"5":{p:2.30,o:2.20},"5-6":{p:2.50,o:2.30},"5-7":{p:3.60,o:2.50},"5-8":{p:4.60,o:3.10},"5-9":{p:5.60,o:3.70},
+"6":{p:2.30,o:2.20},"6-7":{p:2.80,o:2.30},"6-8":{p:3.80,o:2.70},"6-9":{p:4.80,o:3.30},
+"7":{p:2.30,o:2.20},"7-8":{p:2.50,o:2.30},"7-9":{p:3.20,o:2.40},"8":{p:2.30,o:2.20},"8-9":{p:2.50,o:2.30},"9":{p:2.30,o:2.20}
+},
+dcap:{
+"1":8.90,"1-2":8.90,"1-3":10.60,"1-4":13.00,"1-5":15.40,"1-6":16.30,"1-7":19.20,"1-8":22.60,"1-9":25.60,
+"2":8.90,"2-3":8.90,"2-4":10.60,"2-5":13.00,"2-6":15.40,"2-7":17.80,"2-8":20.50,"2-9":23.50,
+"3":8.90,"3-4":8.90,"3-5":10.60,"3-6":13.00,"3-7":16.00,"3-8":18.50,"3-9":21.50,
+"4":8.90,"4-5":8.90,"4-6":10.60,"4-7":14.00,"4-8":16.50,"4-9":19.50,
+"5":8.90,"5-6":8.90,"5-7":12.00,"5-8":14.50,"5-9":17.50,
+"6":8.90,"6-7":10.50,"6-8":12.50,"6-9":15.50,
+"7":8.90,"7-8":8.90,"7-9":10.60,"8":8.90,"8-9":8.90,"9":8.90
+},
+wcap:{
+"1":44.70,"1-2":44.70,"1-3":52.50,"1-4":64.20,"1-5":76.40,"1-6":81.60,"1-7":96.20,"1-8":113.00,"1-9":128.00,
+"2":29.10,"2-3":29.10,"2-4":37.80,"2-5":47.00,"2-6":52.50,"2-7":64.00,"2-8":75.00,"2-9":86.00,
+"3":29.10,"3-4":29.10,"3-5":37.80,"3-6":47.00,"3-7":58.00,"3-8":68.00,"3-9":79.00,
+"4":29.10,"4-5":29.10,"4-6":37.80,"4-7":48.00,"4-8":58.00,"4-9":68.00,
+"5":29.10,"5-6":29.10,"5-7":40.00,"5-8":50.00,"5-9":60.00,
+"6":29.10,"6-7":35.00,"6-8":45.00,"6-9":55.00,
+"7":29.10,"7-8":29.10,"7-9":37.80,"8":29.10,"8-9":29.10,"9":29.10
+},
+tc:{
+w:{"1-2":44.70,"1-3":52.50,"1-4":64.20,"1-5":76.40,"1-6":81.60,"1-7":96.20,"1-8":113.00,"1-9":128.00,"2-3":29.10,"2-4":37.80,"2-5":47.00,"2-6":52.50,"3-4":29.10,"3-5":37.80,"3-6":47.00,"4-5":29.10,"4-6":37.80,"5-6":29.10},
+m:{"1-2":171.70,"1-3":201.50,"1-4":246.60,"1-5":293.50,"1-6":313.50,"1-7":369.60,"1-8":434.10,"1-9":491.50},
+a:{"1-2":1788,"1-3":2100,"1-4":2568,"1-5":3060,"1-6":3264,"1-7":3852,"1-8":4524,"1-9":5120}
+},
+bus:{s:1.75,dc:5.25,wc:24.70},
+rc:{cost:30,d:1/3,dcap:{"1":5.90,"1-2":5.90,"1-3":7.05,"1-4":8.65,"1-5":10.25,"1-6":10.85,"1-7":12.80,"1-8":15.00,"1-9":17.00,"2":5.90,"2-3":5.90,"2-4":7.05,"2-5":8.65,"2-6":10.25,"3":5.90,"3-4":5.90,"3-5":7.05,"3-6":8.65,"4":5.90,"4-5":5.90,"4-6":7.05,"5":5.90,"5-6":5.90,"6":5.90,"7":5.90,"7-8":5.90,"8":5.90,"8-9":5.90,"9":5.90}}
+};
+
+const LABELS={payg:'Pay as you go (tap in & out)',payg_rc:'Oyster with Railcard discount',tc_w:'Weekly travel pass',tc_m:'Monthly travel pass',tc_a:'Annual travel pass',tc_a_rc:'Annual pass + Railcard'};
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const ZC={1:'z1',2:'z2',3:'z3',4:'z4',5:'z5',6:'z6',7:'z7',8:'z8',9:'z9'};
+
+// Animated number counter
+function animateCount(el,target,prefix,suffix,duration){
+    if(!el)return;const start=performance.now();const from=0;
+    function tick(now){const t=Math.min((now-start)/duration,1);const ease=1-Math.pow(1-t,3);
+        el.textContent=prefix+Math.round(from+(target-from)*ease).toLocaleString()+suffix;
+        if(t<1)requestAnimationFrame(tick)}
+    requestAnimationFrame(tick)}
+
+// Debounce helper
+function debounce(fn,ms){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn.apply(this,a),ms)}}
+
+// ── UTILS ──
+function gz(s){const z=ST[s];return z==null?null:Array.isArray(z)?z:[z]}
+function jz(a,b){const az=gz(a),bz=gz(b);if(!az||!bz)return null;let bm=99,bx=99,bs=99;for(const f of az)for(const t of bz){const lo=Math.min(f,t),hi=Math.max(f,t),sp=hi-lo;if(sp<bs||(sp===bs&&lo>1&&bm===1)){bm=lo;bx=hi;bs=sp}}const k=bm===bx?''+bm:`${bm}-${bx}`;const zs=[];for(let z=bm;z<=bx;z++)zs.push(z);return{k,min:bm,max:bx,zs}}
+function tck(k){if(!k.includes('-')){const z=+k;return`${z}-${z+1}`}return k}
+function isPk(t){if(!t)return true;const[h,m]=t.split(':').map(Number);const x=h*60+m;return(x>=390&&x<=570)||(x>=960&&x<=1140)}
+function takeHome(g){if(!g||g<=0)return 0;let t=0,n=0;if(g>12570)t+=Math.min(g-12570,37700)*.2;if(g>50270)t+=Math.min(g-50270,74730)*.4;if(g>125000)t+=(g-125000)*.45;if(g>12570)n+=Math.min(g-12570,37700)*.08;if(g>50270)n+=(g-50270)*.02;return g-t-n}
+
+// ── SEARCH ──
+const snames=Object.keys(ST).sort();
+function search(q){
+    const ql=q.toLowerCase().trim();if(ql.length<1)return[];
+    // Check aliases first
+    const alias=ALIASES[ql];if(alias&&ST[alias]!=null)return[alias];
+    // Partial alias matches
+    const aliasMatches=[];
+    for(const[ak,av]of Object.entries(ALIASES)){if(ak.includes(ql)&&!aliasMatches.includes(av))aliasMatches.push(av)}
+    const pf=[],ct=[];
+    for(const n of snames){const nl=n.toLowerCase();if(nl.startsWith(ql))pf.push(n);else if(nl.includes(ql))ct.push(n)}
+    const combined=[...aliasMatches.filter(a=>!pf.includes(a)&&!ct.includes(a)),...pf,...ct];
+    return[...new Set(combined)].slice(0,12);
+}
+
+// ── AUTOCOMPLETE ──
+function renderDD(dd,results,inp){
+    if(!results.length){
+        if(inp.value.trim().length>=2){dd.innerHTML='<div class="acd-empty">No stations found. Try a different spelling or a nearby station.</div>';dd.classList.add('open');inp.setAttribute('aria-expanded','true')}
+        else{dd.classList.remove('open');inp.setAttribute('aria-expanded','false')}
+        return}
+    dd.innerHTML=results.map((n,i)=>{const z=gz(n);const zl=z.length>1?`Zone ${z.join('/')}`:`Zone ${z[0]}`;
+    return`<div class="aci" role="option" aria-selected="false" id="${dd.id}_${i}" data-n="${n}" data-i="${i}"><span class="nm">${n}</span><span class="zt">${zl}</span></div>`}).join('');
+    dd.classList.add('open');inp.setAttribute('aria-expanded','true');
+    dd.querySelectorAll('.aci').forEach(it=>it.addEventListener('mousedown',e=>{e.preventDefault();inp.value=it.dataset.n;inp.classList.add('ok');dd.classList.remove('open');inp.setAttribute('aria-expanded','false');updateGoBtn();recalc()}))
+}
+function setupAC(iid,did){
+    const inp=document.getElementById(iid),dd=document.getElementById(did);let ai=-1;
+    const debouncedSearch=debounce(()=>{const r=search(inp.value);ai=-1;renderDD(dd,r,inp);if(ST[inp.value]!=null){inp.classList.add('ok');updateGoBtn();recalc()}},80);
+    inp.addEventListener('input',()=>{inp.classList.remove('ok');updateGoBtn();debouncedSearch()});
+    inp.addEventListener('keydown',e=>{const its=dd.querySelectorAll('.aci');if(e.key==='ArrowDown'){e.preventDefault();ai=Math.min(ai+1,its.length-1)}else if(e.key==='ArrowUp'){e.preventDefault();ai=Math.max(ai-1,0)}else if(e.key==='Enter'&&ai>=0){e.preventDefault();e.stopImmediatePropagation();inp.value=its[ai].dataset.n;inp.classList.add('ok');dd.classList.remove('open');inp.removeAttribute('aria-activedescendant');updateGoBtn();recalc();return}else if(e.key==='Escape'){dd.classList.remove('open');inp.setAttribute('aria-expanded','false');inp.removeAttribute('aria-activedescendant');return}its.forEach((x,i)=>{x.classList.toggle('act',i===ai);x.setAttribute('aria-selected',i===ai?'true':'false')});if(ai>=0){its[ai].scrollIntoView({block:'nearest'});inp.setAttribute('aria-activedescendant',its[ai].id)}});
+    inp.addEventListener('blur',()=>setTimeout(()=>dd.classList.remove('open'),150));
+    inp.addEventListener('focus',()=>{if(inp.value.length>=1)renderDD(dd,search(inp.value),inp)});
+}
+setupAC('fromStation','fromDD');setupAC('toStation','toDD');
+document.getElementById('swapBtn').addEventListener('click',function(){const f=document.getElementById('fromStation'),t=document.getElementById('toStation');const tmp=f.value;f.value=t.value;t.value=tmp;f.classList.toggle('ok',ST[f.value]!=null);t.classList.toggle('ok',ST[t.value]!=null);this.classList.add('clicked');setTimeout(()=>this.classList.remove('clicked'),400);updateGoBtn();recalc()});
+
+// ── COMPUTE ──
+function comp(name,zk,days,trips,mp,ep,bus,leave,hrow){
+    const ww=52-leave;const bpd=days>0?bus/days:0;const fare=F.single[zk];if(!fare)return null;
+    const tk=tck(zk);let daily,weekly,annual,monthly,perTrip;
+
+    if(name==='payg'){
+        let rd;if(trips===1)rd=mp?fare.p:fare.o;else if(trips===2)rd=(mp?fare.p:fare.o)+(ep?fare.p:fare.o);
+        else{const pk=Math.ceil(trips/2),op=trips-pk;rd=(mp?pk*fare.p:pk*fare.o)+op*fare.o}
+        if(hrow)rd=trips*fare.p;
+        const cr=Math.min(rd,F.dcap[zk]);const db=Math.min(bpd*F.bus.s,F.bus.dc);
+        // Weekend days are always off-peak on TfL (Heathrow excepted)
+        const wkd=Math.min(days,5),wke=Math.max(0,days-5);
+        let wkRaw;
+        if(wke>0&&!hrow){const rdWke=trips*fare.o;const crWke=Math.min(rdWke,F.dcap[zk]);wkRaw=(cr+db)*wkd+(crWke+db)*wke}
+        else{wkRaw=(cr+db)*days}
+        weekly=Math.min(wkRaw,F.wcap[zk]);daily=weekly/days;annual=weekly*ww;monthly=annual/12;perTrip=annual/(days*trips*ww);
+    }else if(name==='payg_rc'){
+        const d=F.rc.d;let rd;
+        if(trips===1)rd=mp?fare.p:fare.o*(1-d);else if(trips===2)rd=(mp?fare.p:fare.o*(1-d))+(ep?fare.p:fare.o*(1-d));
+        else{const pk=Math.ceil(trips/2),op=trips-pk;rd=(mp?pk*fare.p:pk*fare.o*(1-d))+op*fare.o*(1-d)}
+        const bp=mp&&ep;const cap=bp?F.dcap[zk]:(F.rc.dcap[zk]||F.dcap[zk]);
+        const cr=Math.min(rd,cap);const db=Math.min(bpd*F.bus.s,F.bus.dc);
+        // Weekend: all off-peak, railcard discount applies to all trips
+        const wkd=Math.min(days,5),wke=Math.max(0,days-5);
+        let wkRaw;
+        if(wke>0&&!hrow){const rdWke=trips*fare.o*(1-d);const capWke=F.rc.dcap[zk]||F.dcap[zk];const crWke=Math.min(rdWke,capWke);wkRaw=(cr+db)*wkd+(crWke+db)*wke}
+        else{wkRaw=(cr+db)*days}
+        weekly=wkRaw;daily=weekly/days;annual=weekly*ww+F.rc.cost;monthly=annual/12;perTrip=annual/(days*trips*ww);
+    }else if(name==='tc_w'){
+        const pr=F.tc.w[tk];if(!pr)return null;weekly=pr;daily=weekly/days;annual=weekly*ww;monthly=annual/12;perTrip=annual/(days*trips*ww);
+    }else if(name==='tc_m'){
+        const pr=F.tc.m[tk];if(!pr)return null;monthly=pr;const wm=ww/(52/12);annual=monthly*wm;weekly=monthly/(52/12);daily=weekly/days;perTrip=annual/(days*trips*ww);
+    }else if(name==='tc_a'){
+        const pr=F.tc.a[tk];if(!pr)return null;annual=pr;monthly=annual/12;weekly=annual/52;daily=weekly/days;perTrip=annual/(days*trips*ww);
+    }else if(name==='tc_a_rc'){
+        const pr=F.tc.a[tk];if(!pr)return null;annual=Math.round(pr*(1-F.rc.d))+F.rc.cost;monthly=annual/12;weekly=annual/52;daily=weekly/days;perTrip=annual/(days*trips*ww);
+    }
+    return{name,daily:+(daily.toFixed(2)),weekly:+(weekly.toFixed(2)),monthly:+(monthly.toFixed(2)),annual:+(annual.toFixed(2)),perTrip:+(perTrip.toFixed(2))};
+}
+
+// ── GO BUTTON ──
+function handleGo(){
+    const btn=document.getElementById('goBtn');
+    if(btn.classList.contains('disabled'))return;
+    const res=document.getElementById('res');
+    btn.textContent='Calculating';btn.classList.add('loading');
+    res.setAttribute('aria-busy','true');
+    setTimeout(()=>{
+        btn.classList.remove('loading');
+        recalc();
+        res.setAttribute('aria-busy','false');
+        btn.textContent='Show me the cheapest way to commute';
+        if(res.classList.contains('vis')){
+            res.scrollIntoView({behavior:'smooth',block:'start'});
+            const reco=document.getElementById('reco');
+            if(reco)reco.focus({preventScroll:true});
+        }else btn.textContent='Pick two different stations above';
+    },150);
+}
+function updateGoBtn(){
+    const f=document.getElementById('fromStation').value,t=document.getElementById('toStation').value;
+    const btn=document.getElementById('goBtn'),hint=document.getElementById('goHint');
+    const fOk=ST[f]!=null,tOk=ST[t]!=null;
+    if(fOk&&tOk){btn.classList.remove('disabled');btn.classList.add('ready');hint.classList.add('hidden')}
+    else{btn.classList.add('disabled');btn.classList.remove('ready');hint.classList.remove('hidden');
+        hint.textContent=!fOk&&!tOk?'Pick your departure and arrival stations above to get started':!fOk?'Now pick your departure station':'Now pick your arrival station'}
+}
+
+// ── MAIN ──
+function recalc(){try{
+    const from=document.getElementById('fromStation').value,to=document.getElementById('toStation').value;
+    const j=jz(from,to);const jbar=document.getElementById('jbar'),jerr=document.getElementById('jerr');
+
+    // Same station check
+    if(from&&to&&from===to&&ST[from]!=null){
+        jbar.classList.remove('vis');
+        jerr.textContent='You\'ve picked the same station for both. Choose a different destination to see your commute costs.';
+        jerr.classList.add('vis');
+        document.getElementById('res').classList.remove('vis');return}
+
+    if(!j){jbar.classList.remove('vis');jerr.classList.remove('vis');document.getElementById('res').classList.remove('vis');return}
+
+    // Zone 7+ warning
+    if(j.max>6){jerr.classList.add('vis');jerr.textContent='Zone '+j.max+' fares are estimates. TfL charges National Rail rates for zones 7-9 which can vary. Verify at tfl.gov.uk.';}else{jerr.classList.remove('vis')}
+
+    // Zone viz
+    document.getElementById('zvis').innerHTML=j.zs.map((z,i)=>`${i?'<div class="zcon"></div>':''}<div class="zd ${ZC[z]||'z9'}" style="animation-delay:${i*.05}s" aria-label="Zone ${z}">${z}</div>`).join('');
+    const hrow=[from,to].some(s=>s.toLowerCase().includes('heathrow'));
+    const sf=F.single[j.k];
+    if(sf)document.getElementById('fprev').textContent=`Single: £${sf.p.toFixed(2)} peak / £${hrow?sf.p.toFixed(2):sf.o.toFixed(2)} off-peak`;
+    jbar.classList.add('vis');
+
+    // Inputs
+    const dt=document.getElementById('dept').value,rt=document.getElementById('ret').value;
+    const mp=isPk(dt),ep=isPk(rt);
+    const si=(id,pk)=>{const el=document.getElementById(id);el.textContent=pk?'PEAK':'OFF-PEAK';el.className='tb '+(pk?'pk':'op')};
+    si('mInd',mp);si('eInd',ep);
+    const days=+document.getElementById('days').value,trips=+document.getElementById('trips').value;
+    const bus=+document.getElementById('bus').value,leave=Math.max(0,Math.min(15,+(document.getElementById('leave').value)||0));
+    const hasRc=document.getElementById('rc').value!=='none',sal=+(document.getElementById('sal').value)||0;
+
+    // Options
+    const opts=['payg','tc_w'];
+    if(F.tc.m[tck(j.k)])opts.push('tc_m');if(F.tc.a[tck(j.k)])opts.push('tc_a');
+    if(hasRc){opts.push('payg_rc');if(F.tc.a[tck(j.k)])opts.push('tc_a_rc')}
+    let res=opts.map(n=>comp(n,j.k,days,trips,mp,ep,bus,leave,hrow)).filter(Boolean);
+    res.sort((a,b)=>a.annual-b.annual);
+    if(!res.length){document.getElementById('res').classList.remove('vis');return}
+
+    const cheap=res[0],expensive=res[res.length-1];const savings=Math.round(expensive.annual-cheap.annual);
+    const ww=52-leave;
+
+    // Recommendation
+    const recoEl=document.getElementById('reco');
+    let pctLine='';
+    if(sal>0){const net=takeHome(sal);pctLine=`<div class="vs">That's ${((cheap.annual/net)*100).toFixed(1)}% of your take-home pay (£${Math.round(net).toLocaleString()}/yr)</div>`}
+    const dailyCost=(cheap.annual/((52-leave)*days)).toFixed(2);
+    recoEl.innerHTML=`<div class="sub">We looked at every option &mdash; here's your winner</div><span class="big">${LABELS[cheap.name]}</span>
+        <div class="sub sub-cost">That's just <strong>£${dailyCost}/day</strong> &middot; £${cheap.monthly.toFixed(2)}/month &middot; £${cheap.annual.toLocaleString()}/year</div>
+        ${savings>0?`<div class="act"><span id="savingsNum"></span> (${Math.round(savings/expensive.annual*100)}% less) compared to ${LABELS[expensive.name]}${savings>50?` — that's £${(savings/(days*ww)).toFixed(2)} back in your pocket every day`:''}.</div>`:''}${pctLine}`;
+    if(savings>0){const sEl=document.getElementById('savingsNum');if(sEl)animateCount(sEl,savings,"You'd save £",'/year',800)}
+
+    // Cards
+    document.getElementById('oGrid').innerHTML=res.map((r,i)=>{const diff=r.annual-cheap.annual;const best=i===0;
+        return`<div class="ocard ${best?'best':''}" data-idx="${i}" title="Click to see breakdown" tabindex="0" role="button">${best?'<div class="cbadge">Cheapest</div>':''}
+        <div class="cn">${LABELS[r.name]}</div><div class="ca">£${r.annual.toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:0})}<small>/yr</small></div>
+        <div class="cm">£${r.monthly.toFixed(2)}/mo &middot; £${r.weekly.toFixed(2)}/wk &middot; £${r.perTrip.toFixed(2)}/trip</div>
+        ${best?'<div class="cd sv">Your best bet</div>':`<div class="cd ex">£${diff.toFixed(0)}/yr more (${Math.round(diff/cheap.annual*100)}%)</div>`}</div>`}).join('');
+    // Card click → scroll to breakdown row
+    document.querySelectorAll('#oGrid .ocard').forEach(c=>{
+        const handler=()=>{const idx=+c.dataset.idx;const row=document.querySelectorAll('#tbody tr')[idx];
+            if(row){row.scrollIntoView({behavior:'smooth',block:'center'});row.classList.add('hl');setTimeout(()=>row.classList.remove('hl'),1200)}};
+        c.addEventListener('click',handler);
+        c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();handler()}})});
+
+    // Breakdown
+    document.getElementById('tbody').innerHTML=res.map((r,i)=>
+        `<tr class="${i===0?'best':''}"><td>${LABELS[r.name]}</td><td>£${r.perTrip.toFixed(2)}</td><td>£${r.daily.toFixed(2)}</td><td>£${r.weekly.toFixed(2)}</td><td>£${r.monthly.toFixed(2)}</td><td><strong>£${r.annual.toLocaleString('en-GB',{maximumFractionDigits:0})}</strong></td></tr>`).join('');
+
+    // Timing tip
+    const ttEl=document.getElementById('timeTip');
+    if((mp||ep)&&!hrow){
+        const altR=opts.map(n=>comp(n,j.k,days,trips,false,false,bus,leave,false)).filter(Boolean);
+        altR.sort((a,b)=>a.annual-b.annual);
+        if(altR.length){const ts=Math.round(cheap.annual-altR[0].annual);
+            if(ts>30){ttEl.innerHTML=`<div class="section"><div class="tip amber"><h4>Save £${ts}/year by travelling off-peak</h4><p>If you left after 9:30am and returned after 7pm (or before 4pm), your cheapest option would be <strong>${LABELS[altR[0].name]} at £${altR[0].annual.toFixed(0)}/yr</strong>. Even shifting one leg off-peak helps — <span class="sv">ask your employer about flexible hours</span>.</p></div></div>`;ttEl.style.display=''}
+            else ttEl.style.display='none'}
+    }else ttEl.style.display='none';
+
+    // Railcard tip
+    const rcEl=document.getElementById('rcTip');
+    if(!hasRc&&(!(mp&&ep)||days>5)){
+        const rcR=['payg_rc','tc_a_rc'].map(n=>comp(n,j.k,days,trips,mp,ep,bus,leave,hrow)).filter(Boolean);
+        if(rcR.length){const bestRc=Math.min(...rcR.map(r=>r.annual));const rs=Math.round(cheap.annual-bestRc);
+            if(rs>0){const pb=Math.ceil(F.rc.cost/(rs/52));
+                rcEl.innerHTML=`<div class="section"><div class="tip green"><h4>A Railcard would save you £${rs}/year</h4><p>Costs £${F.rc.cost}/year. Pays for itself in <strong>${pb} week${pb>1?'s':''}</strong>. Link it to an Oyster card at any Tube station. Applies to off-peak travel.</p></div></div>`;rcEl.style.display=''}else rcEl.style.display='none'}else rcEl.style.display='none'
+    }else if(hasRc){
+        const noRc=['payg','tc_w','tc_m','tc_a'].map(n=>comp(n,j.k,days,trips,mp,ep,bus,leave,hrow)).filter(Boolean);
+        const bestNo=Math.min(...noRc.map(r=>r.annual));const rs=Math.round(bestNo-cheap.annual);
+        rcEl.innerHTML=rs>0?`<div class="section"><div class="tip green"><h4>Your Railcard saves you £${rs}/year</h4><p>You're already on the cheapest option with your railcard discount applied.</p></div></div>`
+            :`<div class="section"><div class="tip amber"><h4>Your Railcard isn't saving you money here</h4><p>For this specific commute, the cheapest option without a railcard is the same or cheaper. Your railcard may still be useful for other journeys.</p></div></div>`;
+        rcEl.style.display='';
+    }else rcEl.style.display='none';
+
+    // WFH
+    const wfhEl=document.getElementById('wfhBars');const mx=expensive.annual*1.1;let wh='';
+    let curAnn=0,lessAnn=0;
+    for(let d=Math.max(1,days-2);d<=Math.min(7,days+1);d++){
+        const ab=Math.round(bus*d/days);const ar=opts.map(n=>comp(n,j.k,d,trips,mp,ep,ab,leave,hrow)).filter(Boolean);
+        ar.sort((a,b)=>a.annual-b.annual);if(!ar.length)continue;const b=ar[0];const pct=Math.max(20,(b.annual/mx)*100);
+        if(d===days)curAnn=b.annual;
+        if(d===days-1)lessAnn=b.annual;
+        wh+=`<div class="wb${d===days?' wb-cur':''}"><div class="wl">${d} day${d>1?'s':''}/wk${d===days?' <span class="you">You</span>':''}</div><div class="bw"><div class="b ${d===days?'cur':'alt'}" data-w="${pct}">£${b.annual.toFixed(0)}/yr — ${LABELS[b.name]}</div></div></div>`}
+    const wfhSav=Math.round(curAnn-lessAnn);
+    if(wfhSav>50&&days>1) wh+=`<div class="wfh-save">Working from home just 1 extra day would save you ~£${wfhSav}/year</div>`;
+    wfhEl.innerHTML=wh;
+    requestAnimationFrame(()=>{wfhEl.querySelectorAll('.b[data-w]').forEach((b,i)=>{b.style.width='0';requestAnimationFrame(()=>b.style.width=b.dataset.w+'%')})});
+
+    // Driving comparison
+    const dSec=document.getElementById('driveSection');
+    const zoneSpan=j.max-j.min;const estMiles=5+zoneSpan*4; // rough: ~4 miles per zone
+    const isZ1=j.min===1;const fuelCostPerMile=1.45/(35/4.546); // £/litre ÷ (mpg converted to miles/litre)
+    const dailyFuel=estMiles*2*fuelCostPerMile;
+    const dailyCC=isZ1?15:0; // congestion charge only if going to Z1
+    const dailyParking=12;
+    const dailyDrive=dailyFuel+dailyCC+dailyParking;
+    const annualDrive=dailyDrive*days*ww;
+    const tubeWin=cheap.annual<annualDrive;
+    dSec.style.display='';
+    document.getElementById('dComp').innerHTML=`
+        <div><div class="method">Tube / Rail</div><div class="price ${tubeWin?'win':'lose'}">£${cheap.annual.toFixed(0)}/yr</div><div class="detail">${LABELS[cheap.name]}</div></div>
+        <div class="vs-badge">vs</div>
+        <div><div class="method">Driving</div><div class="price ${tubeWin?'lose':'win'}">£${Math.round(annualDrive)}/yr</div>
+        <div class="detail">Fuel £${dailyFuel.toFixed(2)}${isZ1?' + CC £15':''} + Parking £12/day</div></div>`;
+
+    // Monthly bars — vary by working days (bank holidays, typical leave months)
+    const mWork=[22,20,22,21,20,21,22,18,21,22,21,18]; // typical working days per month (Aug/Dec lower for holidays)
+    const avgWork=mWork.reduce((a,b)=>a+b,0)/12;
+    const mCosts=mWork.map(w=>cheap.monthly*(w/avgWork));
+    const maxM=Math.max(...mCosts)*1.15;
+    let mTotal=0;
+    document.getElementById('mbar').innerHTML=MONTHS.map((m,i)=>{
+        const mc=mCosts[i];mTotal+=mc;
+        const h=Math.max(8,(mc/maxM)*100);
+        const op=(.6+(mc/maxM)*.4).toFixed(2);
+        return`<div class="col" title="${m}: £${mc.toFixed(2)}"><div class="mv">£${Math.round(mc)}</div><div class="bar" data-h="${h}" style="height:0;opacity:${op}"></div><div class="ml">${m}</div></div>`}).join('');
+    document.getElementById('mbarLabel').textContent=`Total: £${cheap.annual.toFixed(0)}/year using ${LABELS[cheap.name]}`;
+    requestAnimationFrame(()=>{document.querySelectorAll('#mbar .bar[data-h]').forEach(b=>{requestAnimationFrame(()=>b.style.height=b.dataset.h+'%')})});
+
+    // Season ticket loan
+    const lSec=document.getElementById('loanSec');
+    const atc=res.find(r=>r.name==='tc_a'||r.name==='tc_a_rc');
+    if(atc){lSec.style.display='';document.getElementById('loanBox').innerHTML=`<div class="lm">£${(atc.annual/12).toFixed(2)}/month</div><p>12 interest-free deductions from your salary. You get the annual discount without the upfront cost. Ask HR — most employers with 50+ staff offer this.</p>`}
+    else lSec.style.display='none';
+
+    // Fun stats
+    const yt=days*trips*ww;const coffee=Math.round(cheap.annual/4.50);const nf=(cheap.annual/(10.99*12)).toFixed(1);
+    const zSpan=j.max-j.min;const minsPerTrip=15+zSpan*8; // 15min base (walk+wait) + ~8min per zone crossed
+    const hrs=Math.round(yt*minsPerTrip/60);
+    const pints=Math.round(cheap.annual/6.50);
+    let salStat='';
+    if(sal>0){const net=takeHome(sal);const pct=((cheap.annual/net)*100).toFixed(1);salStat=`<div class="fs fs-wide"><span class="n">${pct}%</span><span class="d">of your take-home pay (£${Math.round(net).toLocaleString()}/yr net)</span></div>`}
+    document.getElementById('fstats').innerHTML=`
+        <div class="fs"><span class="n" data-count="${yt}">0</span><span class="d">trips per year</span></div>
+        <div class="fs"><span class="n" data-count-prefix="£" data-count-raw="${cheap.perTrip.toFixed(2)}">£0</span><span class="d">cost per trip</span></div>
+        <div class="fs"><span class="n" data-count-prefix="£" data-count-raw="${(cheap.annual/ww).toFixed(2)}">£0</span><span class="d">per working week</span></div>
+        <div class="fs"><span class="n" data-count="${hrs}" data-count-prefix="~" data-count-suffix="h">0</span><span class="d">hours commuting/yr (~${minsPerTrip}min/trip)</span></div>
+        <div class="fs"><span class="n" data-count="${coffee}">0</span><span class="d">coffees worth</span></div>
+        <div class="fs"><span class="n" data-count="${pints}">0</span><span class="d">pints of beer</span></div>
+        ${salStat}`;
+    // Observe fun stats for scroll-triggered count animation
+    const fsObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){
+        e.target.querySelectorAll('[data-count]').forEach(el=>{
+            const v=+el.dataset.count;const pfx=el.dataset.countPrefix||'';const sfx=el.dataset.countSuffix||'';
+            animateCount(el,v,pfx,sfx,600)});
+        e.target.querySelectorAll('[data-count-raw]').forEach(el=>{
+            const raw=el.dataset.countRaw;const pfx=el.dataset.countPrefix||'';
+            el.textContent=pfx+raw}); // just reveal decimals, no counter
+        fsObs.unobserve(e.target)}})},{threshold:0.3});
+    fsObs.observe(document.getElementById('fstats'));
+
+    // Tips
+    const tips=[];
+    if(bus>0&&cheap.name.includes('tc_'))tips.push({c:'green',t:'Buses are included in your travel pass',p:`Unlimited bus travel comes free with a travel pass. That's ~£${Math.round(bus*1.75*ww)} in bus fares you don't need to worry about.`});
+    if(bus>0&&cheap.name==='payg')tips.push({c:'blue',t:'Weekly cap includes buses',p:'On contactless, the weekly cap covers tube AND bus combined. Once you hit it, extra bus trips are free for the rest of the week.'});
+    if(mp&&ep&&!hrow)tips.push({c:'amber',t:'Both trips are peak-rate'+( days>5?' (weekdays only)':''),p:days>5?'Your weekday trips are both at peak rates, but your weekend travel is automatically charged at cheaper off-peak fares. Shifting your evening departure past 7pm would cut your weekday fare further.':'You\'re paying the highest fares both ways. Shifting your evening departure past 7pm would immediately reduce your daily fare.'});
+    if(hrow)tips.push({c:'amber',t:'Heathrow always charges peak rates',p:'All Heathrow journeys are peak-priced regardless of time. No way around this.'});
+    if(days>5&&!hrow)tips.push({c:'green',t:'Weekend fares are automatically off-peak',p:`Your ${days===6?'Saturday':'Saturday and Sunday'} travel is always charged at off-peak rates — no matter what time you travel. This saves you money compared to weekday peak fares.`});
+    if(days<=3)tips.push({c:'blue',t:'Part-time commuters win with pay-as-you-go',p:`At ${days} day${days>1?'s':''}/week, you rarely hit weekly caps. Just tapping your card is almost always cheapest for infrequent travel.`});
+    if(cheap.name==='tc_a'||cheap.name==='tc_a_rc')tips.push({c:'green',t:'Annual travel pass gives you a Gold Card',p:'Free unlimited off-peak National Rail travel across London and the South East. Great for weekend trips to Brighton, Cambridge, etc.'});
+    if(leave>6&&res.some(r=>r.name==='tc_a'))tips.push({c:'amber',t:'Lots of holiday time? An annual pass may not be worth it',p:`${leave} weeks off means ${leave} unused weeks on an annual pass. Monthly passes let you skip months you're away.`});
+    if(j.zs.length>=4)tips.push({c:'blue',t:'Long-distance commute',p:`Crossing ${j.zs.length} zones means big price differences between options. Getting this right saves hundreds per year.`});
+    const fz=gz(from),tz=gz(to);
+    if((fz&&fz.length>1)||(tz&&tz.length>1))tips.push({c:'green',t:'Boundary station advantage',p:'Your station sits on a zone boundary. TfL automatically picks the cheaper zone for your fare. You benefit from this without doing anything.'});
+    tips.push({c:'blue',t:'Always tap in AND out',p:'Failing to tap out causes an incomplete journey charge of up to £9.40. Set up auto-top-up on Oyster to avoid getting stuck at a barrier.'});
+    document.getElementById('tips').innerHTML=tips.map(t=>`<div class="tip ${t.c}"><h4>${t.t}</h4><p>${t.p}</p></div>`).join('');
+
+    // How to buy
+    const htb=document.getElementById('htbSteps');
+    const steps={
+        payg:[['Get a contactless bank card or Oyster','Any Visa, Mastercard, or Amex contactless card works. Or get an Oyster card from any Tube station (£7 deposit, refundable).'],['Just tap in and out','Touch your card on the yellow reader when entering and exiting. Capping is automatic — you don\'t need to do anything else.'],['Check your spending','Use the TfL website or Contactless & Oyster app to see your journeys and verify you\'re being capped correctly.']],
+        payg_rc:[['Buy a Railcard','Get a 16-25 or 26-30 Railcard online at railcard.co.uk for £30/year. You\'ll get a physical or digital card.'],['Get an Oyster card','You need Oyster (not contactless) to use the railcard discount. Get one from any Tube station.'],['Link your Railcard to Oyster','Visit any Tube station ticket machine, select "Railcard" and follow the prompts. Staff can help.'],['Tap in and out as normal','The 1/3 off-peak discount and reduced caps are applied automatically.']],
+        tc_w:[['Buy weekly at a ticket machine','Go to any Tube station ticket machine, select "Travelcard", choose your zones and "7 Day". Load it onto your Oyster card.'],['Or buy online','Purchase via the TfL website and collect at a station, or use the Oyster app.'],['Travel unlimited for the week','Valid from the day you buy it for 7 consecutive days. Includes buses.']],
+        tc_m:[['Buy monthly at a ticket machine or online','Same process as weekly, but select "Monthly". Better value than buying 4 weekly cards.'],['Consider a season ticket loan','If your employer offers interest-free loans, you can spread the annual cost over 12 months. Ask HR.']],
+        tc_a:[['Get a season ticket loan from your employer','Most medium+ employers offer this. You pay nothing upfront — the annual cost is split into 12 salary deductions.'],['Buy at a National Rail station','Annual Travelcards must be purchased at a National Rail ticket office, not Tube machines.'],['Collect your Gold Card','Annual holders get free off-peak National Rail travel across London and the South East. Ask for your Gold Card when purchasing.']],
+        tc_a_rc:[['Buy your Railcard first','Get it from railcard.co.uk for £30/year.'],['Buy the annual Travelcard at a National Rail station','Show your Railcard to get 1/3 off the annual price. Must be purchased in person.'],['Collect your Gold Card','Same Gold Card benefit as a regular annual Travelcard — free off-peak regional travel.']]
+    };
+    const s=steps[cheap.name]||steps.payg;
+    htb.innerHTML=`<p class="sub-desc">Here's exactly how to start using <strong>${LABELS[cheap.name]}</strong> — it only takes a few minutes:</p>`+
+        s.map((st,i)=>`<div class="htb-step"><div class="htb-num">${i+1}</div><div><strong>${st[0]}</strong><p>${st[1]}</p></div></div>`).join('');
+
+    // FAQ — rendered once, not on every recalc (listeners via delegation below)
+
+    document.getElementById('res').classList.add('vis');
+    const _tea=document.getElementById('teaser');_tea.classList.add('fade-out');setTimeout(()=>_tea.style.display='none',400);
+    // Update progress bar
+    ['ps1','ps2','ps3'].forEach(id=>{const el=document.getElementById(id);el.classList.add('done');el.classList.remove('active')});
+    updateProgressAria();
+    ['pl1','pl2'].forEach(id=>document.getElementById(id).classList.add('done'));
+    if(!window._sc){document.getElementById('res').scrollIntoView({behavior:'smooth',block:'start'});window._sc=true}
+    renderSwitch(res,cheap,j,days,trips,mp,ep,bus,leave,hrow);
+    renderBreakEven(j,days,trips,mp,ep,bus,leave,hrow,hasRc);
+    renderCycling(cheap,j,days,leave);
+    const ctEl=document.getElementById('closingText');
+    if(ctEl)ctEl.innerHTML=`Your cheapest option is <strong>${LABELS[cheap.name]}</strong> at £${cheap.annual.toFixed(0)}/year. Save this page or print your personalised results to keep them handy.`;
+    saveInputs();
+    setupReveal();
+}catch(e){console.error('Calculation error:',e);document.getElementById('jerr').textContent='Something went wrong with the calculation. Try adjusting your inputs.';document.getElementById('jerr').classList.add('vis')}}
+
+// ── SWITCH BANNER (current method comparison) ──
+function renderSwitch(res,cheap,j,days,trips,mp,ep,bus,leave,hrow){
+    const cm=document.getElementById('curMethod').value;
+    const banner=document.getElementById('switchBanner');
+    if(cm==='unknown'){banner.style.display='none';return}
+    let curCost;
+    if(cm==='driving'){
+        const zs=j.max-j.min;const em=5+zs*4;const isZ1=j.min===1;
+        const df=em*2*(1.45/(35/4.546));const dd=df+(isZ1?15:0)+12;
+        curCost=dd*days*(52-leave);
+    }else{
+        const r=comp(cm,j.k,days,trips,mp,ep,bus,leave,hrow);
+        curCost=r?r.annual:null;
+    }
+    if(!curCost||curCost<=cheap.annual){banner.style.display='none';return}
+    const sv=Math.round(curCost-cheap.annual);
+    const fromLabel=cm==='driving'?'Driving':LABELS[cm]||cm;
+    banner.style.display='';
+    banner.innerHTML=`<div class="switch-banner"><div class="sw-from">Right now you're paying: ${fromLabel} (£${Math.round(curCost)}/yr)</div><div class="sw-arrow">&#8595;</div><div class="sw-to">If you switched to: ${LABELS[cheap.name]} (£${cheap.annual.toFixed(0)}/yr)</div><div class="sw-save count-anim">You'd save £${sv} a year</div></div>`;
+}
+
+// ── BREAK-EVEN ANALYSIS ──
+function renderBreakEven(j,days,trips,mp,ep,bus,leave,hrow,hasRc){
+    const sec=document.getElementById('beSection');
+    const tk=tck(j.k);
+    // We need weekly travelcard to exist
+    if(!F.tc.w[tk]){sec.style.display='none';return}
+    sec.style.display='';
+
+    const ww=52-leave;const pts=[];let crossDay=null;
+    for(let d=1;d<=7;d++){
+        const payg=comp('payg',j.k,d,trips,mp,ep,Math.round(bus*d/days),leave,hrow);
+        const tcw=comp('tc_w',j.k,d,trips,mp,ep,Math.round(bus*d/days),leave,hrow);
+        if(payg&&tcw){
+            pts.push({d,payg:payg.annual,tc:tcw.annual});
+            if(!crossDay&&tcw.annual<=payg.annual)crossDay=d;
+        }
+    }
+    if(pts.length<2){sec.style.display='none';return}
+
+    const maxY=Math.max(...pts.map(p=>Math.max(p.payg,p.tc)))*1.08;
+    const w=100,h=100;
+    const px=d=>(d-1)/(6)*w;
+    const py=(v)=>h-((v/maxY)*h);
+
+    const paygLine=pts.map((p,i)=>`${i?'L':'M'}${px(p.d).toFixed(1)},${py(p.payg).toFixed(1)}`).join(' ');
+    const tcLine=pts.map((p,i)=>`${i?'L':'M'}${px(p.d).toFixed(1)},${py(p.tc).toFixed(1)}`).join(' ');
+
+    let crossMark='';
+    if(crossDay){
+        const cp=pts.find(p=>p.d===crossDay);
+        if(cp)crossMark=`<circle cx="${px(cp.d).toFixed(1)}" cy="${py(cp.tc).toFixed(1)}" r="3" fill="var(--red)" stroke="var(--card)" stroke-width="1.5"/>`;
+    }
+
+    document.getElementById('beChart').innerHTML=`
+        <div class="be-svg-wrap">
+        <svg viewBox="-5 -5 ${w+10} ${h+15}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            ${pts.map(p=>`<line x1="${px(p.d)}" y1="${h}" x2="${px(p.d)}" y2="${h+3}" stroke="var(--border)" stroke-width="0.5"/><text x="${px(p.d)}" y="${h+10}" text-anchor="middle" font-size="4" fill="var(--dim)">${p.d}d</text>`).join('')}
+            <path d="${paygLine}" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="${tcLine}" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            ${pts.map(p=>`<circle cx="${px(p.d).toFixed(1)}" cy="${py(p.payg).toFixed(1)}" r="2" fill="var(--blue)" stroke="var(--card)" stroke-width="1"><title>${p.d}d PAYG: £${Math.round(p.payg)}/yr</title></circle><circle cx="${px(p.d).toFixed(1)}" cy="${py(p.tc).toFixed(1)}" r="2" fill="var(--green)" stroke="var(--card)" stroke-width="1"><title>${p.d}d Pass: £${Math.round(p.tc)}/yr</title></circle>`).join('')}
+            ${crossMark}
+        </svg></div>
+        <div class="be-legend"><span><span class="dot dot-payg"></span>Pay as you go</span><span><span class="dot dot-pass"></span>Weekly pass</span></div>`;
+
+    document.getElementById('beCrossover').innerHTML=crossDay
+        ?`<div class="be-crossover">A weekly pass starts saving you money at <strong>${crossDay} days per week</strong>. If you commute less than that, just tap in and out.</div>`
+        :`<div class="be-crossover">Pay as you go is cheaper no matter how many days you commute for this journey.</div>`;
+}
+
+// ── CYCLING COMPARISON ──
+function renderCycling(cheap,j,days,leave){
+    const sec=document.getElementById('cycSection');
+    sec.style.display='';
+    const ww=52-leave;
+    const estMiles=5+((j.max-j.min)*4); // rough distance
+    const estKm=Math.round(estMiles*1.61);
+    const santanderAnnual=20*12;
+    const ownBikeAnnual=200;
+    const tubeAnn=cheap.annual;
+    const opts=[
+        {mode:'Tube/Rail',price:tubeAnn,detail:LABELS[cheap.name],best:false},
+        {mode:'Santander Bikes',price:santanderAnnual,detail:'£20/mo, rides under 30 min free',best:false},
+        {mode:'Own bicycle',price:ownBikeAnnual,detail:'~£200/yr maintenance & insurance',best:false}
+    ];
+    const minP=Math.min(...opts.map(o=>o.price));
+    opts.forEach(o=>o.best=o.price===minP);
+    const annualRides=days*2*ww;
+    const calPerRide=Math.round(estKm*25); // ~25 cal per km cycling
+    const annualCal=Math.round(annualRides*calPerRide/1000);
+    let cycNote='';
+    if(estKm>20)cycNote=`<div class="cyc-warn">At ~${estKm}km each way, this is a very long cycle — realistic only for committed cyclists with e-bikes.</div>`;
+    else if(estKm>12)cycNote=`<div class="cyc-warn">At ~${estKm}km each way, this is a solid ride (~${Math.round(estKm*3)}min). Doable but plan for weather and hills.</div>`;
+    document.getElementById('cycGrid').innerHTML=opts.map(o=>
+        `<div class="cyc-card ${o.best?'best-cyc':''}"><div class="cyc-mode">${o.mode}</div><div class="cyc-price">£${Math.round(o.price)}/yr</div><div class="cyc-detail">${o.detail}</div></div>`
+    ).join('')+cycNote+`<div class="cyc-footer">Estimated one-way distance: ~${estKm}km. Cycling ${days} days/week burns ~${annualCal},000 calories/year.</div>`;
+}
+
+// ── SHARE RESULTS ──
+function shareResults(){
+    const from=document.getElementById('fromStation').value,to=document.getElementById('toStation').value;
+    const days=document.getElementById('days').value;
+    const rows=document.querySelectorAll('#tbody tr');
+    let text=`My London commute costs (${from} → ${to}, ${days} days/week)\n\n`;
+    let first=true;
+    rows.forEach(r=>{const cells=r.querySelectorAll('td');if(cells.length>=6){text+=`${first?'→ ':' '} ${cells[0].textContent}: ${cells[5].textContent}/yr (${cells[3].textContent}/wk)${first?' ✓ CHEAPEST':''}\n`;first=false}});
+    text+=`\nCalculated with London Commute Cost Optimizer`;
+    // Try native share on mobile, fallback to clipboard
+    if(navigator.share&&/Mobi|Android/i.test(navigator.userAgent)){
+        navigator.share({title:'My London Commute Costs',text:text}).catch(()=>{});return}
+    const onCopied=()=>{const btn=document.getElementById('shareBtn');
+        btn.textContent='Copied!';btn.classList.add('copied');btn.setAttribute('aria-label','Results copied to clipboard');
+        setTimeout(()=>{btn.textContent='Copy results to clipboard';btn.classList.remove('copied');btn.setAttribute('aria-label','Copy results to clipboard')},2000)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(onCopied).catch(()=>{
+            // Fallback for permission denied
+            const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;left:-9999px';
+            document.body.appendChild(ta);ta.select();
+            try{document.execCommand('copy');onCopied()}catch(e){}
+            document.body.removeChild(ta)});
+    }else{
+        const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;left:-9999px';
+        document.body.appendChild(ta);ta.select();
+        try{document.execCommand('copy');onCopied()}catch(e){}
+        document.body.removeChild(ta)}
+}
+
+// ── LOCAL STORAGE ──
+const SAVE_FIELDS=['fromStation','toStation','days','trips','dept','ret','bus','leave','rc','sal','curMethod'];
+function saveInputs(){
+    const data={};SAVE_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el)data[id]=el.value});
+    try{localStorage.setItem('lco_inputs',JSON.stringify(data))}catch(e){}
+}
+function loadInputs(){
+    try{
+        const raw=localStorage.getItem('lco_inputs');if(!raw)return;
+        const data=JSON.parse(raw);
+        SAVE_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el&&data[id]!=null){el.value=data[id];if(id==='fromStation'||id==='toStation'){if(ST[data[id]]!=null)el.classList.add('ok')}}});
+        recalc();
+    }catch(e){}
+}
+
+// ── SCROLL REVEAL ──
+function setupReveal(){
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+
+// Station inputs auto-update journey bar (zones preview) immediately; dropdown is debounced via setupAC
+document.getElementById('fromStation').addEventListener('input',function(){if(ST[this.value]!=null){this.classList.add('ok');updateGoBtn();updateJourneyBar()}});
+document.getElementById('toStation').addEventListener('input',function(){if(ST[this.value]!=null){this.classList.add('ok');updateGoBtn();updateJourneyBar()}});
+
+// Progress step aria helper
+function updateProgressAria(){['ps1','ps2','ps3'].forEach(id=>{const el=document.getElementById(id);if(el.classList.contains('active'))el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')})}
+
+// Step 2 progress — activate when user interacts with commute details
+['days','trips','dept','ret','bus','leave','rc','sal','curMethod'].forEach(id=>{
+    document.getElementById(id).addEventListener('change',function(){
+        const ps2=document.getElementById('ps2');
+        if(!ps2.classList.contains('done')){ps2.classList.add('active');document.getElementById('pl1').classList.add('done');updateProgressAria()}
+    })});
+
+// Time inputs update the peak/off-peak badges live
+document.getElementById('dept').addEventListener('input',()=>{const m=isPk(document.getElementById('dept').value);const el=document.getElementById('mInd');el.textContent=m?'PEAK':'OFF-PEAK';el.className='tb '+(m?'pk':'op')});
+document.getElementById('ret').addEventListener('input',()=>{const e=isPk(document.getElementById('ret').value);const el=document.getElementById('eInd');el.textContent=e?'PEAK':'OFF-PEAK';el.className='tb '+(e?'pk':'op')});
+
+function updateJourneyBar(){
+    const from=document.getElementById('fromStation').value,to=document.getElementById('toStation').value;
+    const j=jz(from,to);const jbar=document.getElementById('jbar'),jerr=document.getElementById('jerr');
+    if(from&&to&&from===to&&ST[from]!=null){
+        jbar.classList.remove('vis');
+        jerr.textContent='You\'ve picked the same station for both. Choose a different destination to see your commute costs.';
+        jerr.classList.add('vis');return}
+    if(!j){jbar.classList.remove('vis');jerr.classList.remove('vis');return}
+    if(j.max>6){jerr.classList.add('vis');jerr.textContent='Zone '+j.max+' fares are estimates. TfL charges National Rail rates for zones 7-9 which can vary. Verify at tfl.gov.uk.';}else{jerr.classList.remove('vis')}
+    document.getElementById('zvis').innerHTML=j.zs.map((z,i)=>`${i?'<div class="zcon"></div>':''}<div class="zd ${ZC[z]||'z9'}" style="animation-delay:${i*.05}s" aria-label="Zone ${z}">${z}</div>`).join('');
+    const hrow=[from,to].some(s=>s.toLowerCase().includes('heathrow'));
+    const sf=F.single[j.k];
+    if(sf)document.getElementById('fprev').textContent=`Single: £${sf.p.toFixed(2)} peak / £${hrow?sf.p.toFixed(2):sf.o.toFixed(2)} off-peak`;
+    jbar.classList.add('vis');
+    // Update progress: step 1 done, step 2 active
+    document.getElementById('ps1').classList.add('done');
+    document.getElementById('ps1').classList.remove('active');
+    document.getElementById('pl1').classList.add('done');
+    document.getElementById('ps2').classList.add('active');
+    updateProgressAria();
+}
+
+// Back to top button visibility + dismiss autocomplete on scroll
+window.addEventListener('scroll',()=>{
+    const btt=document.getElementById('btt');
+    btt.classList.toggle('show',window.scrollY>600);
+    document.querySelectorAll('.acd.open').forEach(d=>{d.classList.remove('open')});
+},{passive:true});
+
+// Table scroll hint — hide once user scrolls the table
+document.getElementById('tableWrap').addEventListener('scroll',function(){if(this.scrollLeft>10)this.classList.add('scrolled')},{passive:true});
+
+// Go button click
+document.getElementById('goBtn').addEventListener('click',handleGo);
+// Enter key triggers Go from any input
+document.querySelectorAll('.si').forEach(el=>{
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!el.classList.contains('acd')){e.preventDefault();handleGo()}})
+});
+// Ctrl+Enter global shortcut
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();handleGo()}});
+
+// Action buttons
+const scrollToHero=()=>document.querySelector('.hero').scrollIntoView({behavior:'smooth'});
+document.getElementById('btt').addEventListener('click',scrollToHero);
+document.getElementById('recalcBtn').addEventListener('click',scrollToHero);
+document.getElementById('ctaPrint').addEventListener('click',()=>window.print());
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+document.getElementById('shareBtn').addEventListener('click',shareResults);
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Clear all your inputs and start fresh?')){localStorage.removeItem('lco_inputs');location.reload()}});
+
+// FAQ — render once, delegate events (never re-rendered by recalc)
+(()=>{
+    const faqs=[
+        ['Does tapping my bank card automatically get me the cheapest price?','Pretty much! Contactless has a built-in weekly spending limit that matches what a weekly pass costs. So if you travel a lot, you never pay more than the pass price. If you travel less, you pay less. It\'s the best of both worlds.'],
+        ['Should I get an Oyster card or just use my bank card?','Your bank card (or phone) is better for most people because it has weekly spending caps that Oyster doesn\'t. The only time Oyster wins is if you have a Railcard — that discount only works with Oyster.'],
+        ['What happens if I forget to tap out?','You\'ll get charged up to £9.40 as an "incomplete journey" penalty. It\'s annoying but you can claim a refund on the TfL website within 8 weeks.'],
+        ['Can I use my phone instead of a card?','Absolutely. Apple Pay, Google Pay, and Samsung Pay all work exactly the same. You still get all the same spending caps.'],
+        ['Do children need to pay?','Under 11s ride free. 11-15 year olds get free bus/tram travel with a Zip card. 16-17 year olds can get half price with a 16+ Zip Oyster.'],
+        ['What about the Elizabeth Line?','It\'s included in the normal fare system — same zones, same caps, same card. Nothing extra to think about.'],
+        ['Is it cheaper to travel at weekends?','Yes! All day Saturday, Sunday, and bank holidays count as off-peak, so fares are lower. Great for weekend plans.'],
+        ['How accurate is this calculator?','Very. We use official TfL fare tables updated for 2026 and calculate exactly the way TfL does — including daily caps, weekly caps, boundary station optimisation, and Railcard discounts. The only thing we can\'t predict is unexpected closures or using different routes on different days.']
+    ];
+    const faqEl=document.getElementById('faq');
+    faqEl.innerHTML=faqs.map(([q,a],i)=>
+        `<div class="faq-item${i===0?' open':''}"><div class="faq-q" tabindex="0" role="button" aria-expanded="${i===0?'true':'false'}">${q}</div><div class="faq-a">${a}</div></div>`).join('');
+    faqEl.addEventListener('click',e=>{const q=e.target.closest('.faq-q');if(!q)return;q.parentElement.classList.toggle('open');q.setAttribute('aria-expanded',q.parentElement.classList.contains('open'))});
+    faqEl.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const q=e.target.closest('.faq-q');if(!q)return;e.preventDefault();q.click()}});
+})();
+
+// Init
+loadInputs();
+// Show initial peak badges
+(()=>{const m=isPk(document.getElementById('dept').value);const e=isPk(document.getElementById('ret').value);const mi=document.getElementById('mInd'),ei=document.getElementById('eInd');mi.textContent=m?'PEAK':'OFF-PEAK';mi.className='tb '+(m?'pk':'op');ei.textContent=e?'PEAK':'OFF-PEAK';ei.className='tb '+(e?'pk':'op')})();
+updateGoBtn();
+updateJourneyBar();
+// If results already loaded from localStorage, hide teaser
+if(document.getElementById('res').classList.contains('vis'))document.getElementById('teaser').style.display='none';
+</script>
+</body>
+</html>

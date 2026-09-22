@@ -1,0 +1,11 @@
+{
+  "id": "commute",
+  "repo": "london-commute-calculator",
+  "title": "commute calculator",
+  "caption": "Compares pay-as-you-go, fare caps and Travelcards for the week you actually travel.",
+  "workflow": "Enter your journey and working pattern, then compare ticket costs with daily and weekly caps. The full calculator also handles zones, peak times, Railcards, annual leave and break-even points.",
+  "benefit": "Working from home changes which ticket is worth buying.",
+  "demo": "Change commute days and fares; compare capped PAYG with a weekly ticket.",
+  "source": "london-commute/london-commute-optimizer.html and london-stations.js, included under original/.",
+  "boundary": "The mini example uses editable illustrative fares. The full original includes dated fare tables; check current TfL prices before buying."
+}
