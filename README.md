@@ -1,43 +1,27 @@
-# commute calculator
+# London commute calculator
 
-Compares pay-as-you-go, fare caps and Travelcards for the week you actually travel.
+**[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/)** ? [Application source](examples/portfolio/index.html) ? [Station database](examples/portfolio/london-stations.js)
 
-<!-- working-example:start -->
-## Try it in a minute
+The original, complete commute calculator. Choose real London stations, the days and times
+you travel, a Railcard and annual leave. Compare PAYG, daily/weekly caps, weekly/monthly/annual
+Travelcards, break-even travel days, working-from-home savings and a season-ticket loan.
 
-**[Live example](https://lolstar123.github.io/london-commute-calculator/)** · [Example code](examples/portfolio/model.mjs) · [Run locally](examples/portfolio/README.md) · [Atul's website](https://atul-kanodia-fieldnotes.atulswaggalicious.chatgpt.site)
+<img src="examples/portfolio/preview.png" alt="Commute calculator with a populated Stratford to Euston Square journey" width="900">
 
-Change commute days and fares; compare capped PAYG with a weekly ticket.
-
-<img src="examples/portfolio/preview.png" alt="commute calculator example inputs and calculated output" width="760">
-
-<!-- working-example:end -->
-
-## The project
-
-Enter your journey and working pattern, then compare ticket costs with daily and weekly caps. The full calculator also handles zones, peak times, Railcards, annual leave and break-even points.
-
-Working from home changes which ticket is worth buying.
-
-## Find your way around
-
-| Path | What is here |
-| --- | --- |
-| [examples/portfolio](examples/portfolio) | Runnable browser example and fixtures |
-| [model.mjs](examples/portfolio/model.mjs) | Actual calculation or workflow |
-| [model.test.mjs](examples/portfolio/model.test.mjs) | Reproducible checks and edge cases |
-| [PROVENANCE.md](PROVENANCE.md) | How this example relates to the full project |
-| [AGENTS.md](AGENTS.md) | Instructions for extending the example |
-
-## Quick start
+## Run
 
 ```sh
 python -m http.server 8000 --directory examples/portfolio
-node --test examples/portfolio/model.test.mjs
 ```
 
-Open http://localhost:8000. No dependencies, accounts or API keys needed.
+Open http://localhost:8000. The complete app runs locally with its 400-plus-station database.
+Inputs stay in your browser. Print the result or copy the comparison after changing a journey.
 
-## What is included
+## Fare basis
 
-The mini example uses editable illustrative fares. The full original includes dated fare tables; check current TfL prices before buying.
+The bundled fare table is dated March 2026, retained from the original application. It is not
+a live fare quotation. Check current TfL fares before buying; exact routes and National Rail
+journeys can differ. The default Stratford / Euston Square journey is a starting example,
+not a claim about Atul's commute.
+
+The old five-input demonstration has been replaced by the actual application.
