@@ -1,6 +1,6 @@
 # London commute calculator
 
-**[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/)** ? [Application source](examples/portfolio/index.html) ? [Station database](examples/portfolio/london-stations.js)
+**[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/)** | [Application source](examples/portfolio/index.html) | [Station database](examples/portfolio/london-stations.js)
 
 The original, complete commute calculator. Choose real London stations, the days and times
 you travel, a Railcard and annual leave. Compare PAYG, daily/weekly caps, weekly/monthly/annual
