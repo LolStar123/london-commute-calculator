@@ -1,1 +1,1 @@
-The complete app and station database come from Atul?s existing london-commute project. This publication adds source navigation, a populated starting journey and explicit dated-fare wording. No generated station or fare records were added.
+The complete app and station database come from Atul's existing london-commute project. This publication adds source navigation, a populated starting journey and explicit dated-fare wording. No generated station or fare records were added.

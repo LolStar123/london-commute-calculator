@@ -1,9 +1,7 @@
-# Working on commute calculator
+# Working on the commute calculator
 
-Read PROVENANCE.md and examples/portfolio/README.md first.
-Keep calculation and decision logic in model.mjs, independently runnable in Node.
-Run `node --test examples/portfolio/model.test.mjs` after changes.
-Keep generated fixtures labelled; never present sample outcomes as measured production results.
-Preserve the project's workflow: Enter your journey and working pattern, then compare ticket costs with daily and weekly caps. The full calculator also handles zones, peak times, Railcards, annual leave and break-even points.
-Add regression checks for changed decisions, including missing or invalid inputs.
-Do not add credentials, user records or runtime account integrations to the demo.
+Read README.md and PROVENANCE.md first. The full app is examples/portfolio/index.html with the station database in london-stations.js; the retired model.mjs demo is no longer present.
+
+Run `python tools/browser_audit.py` after changing the app. Preserve the real station records, dated fare basis, zone handling, travel patterns, caps and ticket comparisons. Add a browser regression check when changing a calculation or decision.
+
+Inputs stay in the browser. Never add credentials or represent bundled March 2026 fares as live prices.

@@ -1,33 +1,9 @@
-# commute calculator: working example
+# London commute calculator
 
-Change commute days and fares; compare capped PAYG with a weekly ticket.
+[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/) | [application source](index.html) | [station database](london-stations.js)
 
-**[Open the demo](https://lolstar123.github.io/london-commute-calculator/)** · [Calculation / workflow code](model.mjs) · [Checks](model.test.mjs)
+Choose your stations, travel times and working week. Compare PAYG caps with Travelcards, then include Railcards, annual leave and season-ticket financing. Print or copy the comparison.
 
-![Example output](preview.png)
+The app uses the original station database and March 2026 fare table. Inputs stay in the browser. These are dated fare assumptions, not a live quotation.
 
-## Run it
-
-From the repository root, with Python 3 and Node.js 22:
-
-```sh
-python -m http.server 8000 --directory examples/portfolio
-```
-
-Open http://localhost:8000. Change an input, or edit the JSON fixture, then export the computed result as JSON or CSV.
-
-```sh
-node --test examples/portfolio/model.test.mjs
-```
-
-## What it does
-
-Enter your journey and working pattern, then compare ticket costs with daily and weekly caps. The full calculator also handles zones, peak times, Railcards, annual leave and break-even points.
-
-## Scope and source
-
-The mini example uses editable illustrative fares. The full original includes dated fare tables; check current TfL prices before buying.
-
-london-commute/london-commute-optimizer.html and london-stations.js, included under original/.
-
-`model.mjs` is the small public implementation. `app.mjs` connects its inputs and outputs to the browser. No package install or network key is needed to run the example. GitHub Pages runs the same files after the checks pass.
+From the repository root, run `python -m http.server 8000 --directory examples/portfolio` and open localhost:8000. Run `python tools/browser_audit.py` to check the actual application. See the [repository guide](../../README.md) and [data scope](../../PROVENANCE.md).
