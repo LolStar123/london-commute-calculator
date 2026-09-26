@@ -16,7 +16,7 @@ try:
         page=browser.new_page(viewport={'width':1280,'height':1000},reduced_motion='reduce')
         errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(os.environ.get('AUDIT_URL',f'http://127.0.0.1:{server.server_port}'),wait_until='networkidle')
-        assert 'round trip' in page.locator('.hero h1').inner_text().lower()
+        assert 'outbound + return' in page.locator('.hero p').inner_text().lower()
         assert page.locator('#trips').input_value() == '2'
         page.wait_for_selector('#res.vis')
         assert page.locator('#fromStation').input_value()=='Stratford'
