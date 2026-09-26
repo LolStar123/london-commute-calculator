@@ -29,6 +29,7 @@ try:
         assert 'disabled' in page.locator('#goBtn').get_attribute('class')
         page.locator('#fromStation').fill('Stratford');page.locator('#goBtn').click()
         page.wait_for_selector('#res.vis')
+        page.wait_for_function("document.querySelector('#goBtn').textContent==='compare fares'")
         page.evaluate('window.scrollTo(0,0)')
         page.screenshot(path=str(ROOT/'examples/portfolio/preview.png'))
         page.set_viewport_size({'width':390,'height':844})
