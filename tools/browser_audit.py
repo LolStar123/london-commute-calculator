@@ -16,7 +16,8 @@ try:
         page=browser.new_page(viewport={'width':1280,'height':1000},reduced_motion='reduce')
         errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
         page.goto(os.environ.get('AUDIT_URL',f'http://127.0.0.1:{server.server_port}'),wait_until='networkidle')
-        assert 'outbound + return' in page.locator('.hero p').inner_text().lower()
+        assert page.locator('#ret').is_visible()
+        assert page.locator('#ret').input_value() == '17:30'
         assert page.locator('#trips').input_value() == '2'
         page.wait_for_selector('#res.vis')
         assert page.locator('#fromStation').input_value()=='Stratford'
@@ -26,6 +27,10 @@ try:
         page.wait_for_function("expected => document.querySelector('#mbarLabel').innerText!==expected",arg=before)
         page.locator('#days').select_option('3');page.locator('#goBtn').click()
         page.wait_for_function("expected => document.querySelector('#mbarLabel').innerText===expected",arg=before)
+        fare_before=page.locator('#reco').inner_text()
+        page.locator('#ret').fill('20:00');page.locator('#goBtn').click()
+        page.wait_for_function("expected => document.querySelector('#reco').innerText!==expected",arg=fare_before)
+        page.locator('#ret').fill('17:30');page.locator('#goBtn').click()
         page.locator('#fromStation').fill('Nonexistent station')
         assert not page.locator('#res').is_visible()
         assert 'disabled' in page.locator('#goBtn').get_attribute('class')

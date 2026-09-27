@@ -2,9 +2,9 @@
 
 **[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/)** | [Application source](examples/portfolio/index.html) | [Station database](examples/portfolio/london-stations.js)
 
-The original, complete commute calculator. Choose real London stations, the days and times
-you travel, a Railcard and annual leave. Compare PAYG, daily/weekly caps, weekly/monthly/annual
-Travelcards, break-even travel days, working-from-home savings and a season-ticket loan.
+Choose real London stations, the days you commute and the times you leave home and work.
+The public calculator prices both legs, then compares PAYG and weekly, monthly and annual
+passes. The original advanced calculator is retained in [`original/`](original/).
 
 <img src="examples/portfolio/preview.png" alt="Commute calculator with a populated Stratford to Euston Square journey" width="900">
 
@@ -24,4 +24,4 @@ a live fare quotation. Check current TfL fares before buying; exact routes and N
 journeys can differ. The default Stratford / Euston Square journey is a starting example,
 not a claim about Atul's commute.
 
-The old five-input demonstration has been replaced by the actual application.
+The recommendation is deliberately compact: one cheapest option and its two nearest alternatives.
