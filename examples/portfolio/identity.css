@@ -5,7 +5,6 @@ main{padding:40px 0 48px}
 .hero{margin-bottom:22px}
 .hero h1{margin:0;font:750 clamp(40px,6vw,58px)/.93 "Segoe UI",Arial,sans-serif;letter-spacing:-.035em}
 .planner{position:relative;padding:21px 22px;border:1px solid var(--line);border-inline:7px double var(--green);background:var(--quiet)}
-.planner:before{content:"HOME  \2192  WORK  \2192  HOME";position:absolute;top:-9px;right:18px;padding:0 7px;background:var(--bg);color:var(--green);font:10px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.1em}
 .compact{grid-template-columns:repeat(3,1fr);margin-top:10px}
 .go-btn{margin-top:14px}
 .results{margin-top:26px}

@@ -1265,8 +1265,11 @@
                     }
 
                     const cheap = res[0],
+                        nextCheapest = res[1],
                         expensive = res[res.length - 1];
-                    const savings = Math.round(expensive.annual - cheap.annual);
+                    const nextSaving = nextCheapest
+                        ? Math.round(nextCheapest.annual - cheap.annual)
+                        : 0;
                     const ww = 52 - leave;
 
                     // Recommendation
@@ -1279,7 +1282,7 @@
                         returnFare = sf ? (hrow || ep ? sf.p : sf.o) : 0,
                         outboundLabel = hrow || mp ? "peak" : "off-peak",
                         returnLabel = hrow || ep ? "peak" : "off-peak";
-                    recoEl.innerHTML = `<div class="winner-badge">best option · ${days} days/week</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}/day</div><p>£${cheap.annual.toLocaleString()}/year${savings > 0 ? ` · saves £${savings.toLocaleString()}` : ""}</p><div class="return-basis"><span>outbound <b>${dt} · ${outboundLabel} £${outboundFare.toFixed(2)}</b></span><span>return <b>${rt} · ${returnLabel} £${returnFare.toFixed(2)}</b></span></div>`;
+                    recoEl.innerHTML = `<div class="winner-badge">best option · ${days} days/week</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}/day</div><p>£${cheap.annual.toLocaleString()}/year${nextSaving > 0 ? ` · £${nextSaving.toLocaleString()} less than ${LABELS[nextCheapest.name]}` : ""}</p><div class="return-basis"><span>outbound <b>${dt} · ${outboundLabel} £${outboundFare.toFixed(2)}</b></span><span>return <b>${rt} · ${returnLabel} £${returnFare.toFixed(2)}</b></span></div>`;
 
                     // Cards
                     document.getElementById("oGrid").innerHTML = res.slice(1, 3)

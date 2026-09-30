@@ -44,6 +44,9 @@ try:
         page.screenshot(path=str(ROOT/'examples/portfolio/preview.png'))
         page.set_viewport_size({'width':390,'height':844})
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'mobile overflow'
+        page.locator('#ret').focus()
+        ret_box=page.locator('#ret').bounding_box()
+        assert ret_box and 0 <= ret_box['y'] <= 844, 'return time input not brought into view'
         assert not errors,errors
         print('PASS: populated station journey, recalculation, reversal, invalid station, mobile, no JS errors')
         browser.close()
