@@ -21,6 +21,9 @@ try:
         assert page.locator('#trips').input_value() == '2'
         page.wait_for_selector('#res.vis')
         assert page.locator('#fromStation').input_value()=='Stratford'
+        recommendation=page.locator('#reco').inner_text()
+        assert 'outbound' in recommendation and 'return' in recommendation
+        assert '08:00' in recommendation and '17:30' in recommendation
         before=page.locator('#mbarLabel').inner_text()
         assert 'NaN' not in before and 'Infinity' not in before
         page.locator('#days').select_option('5');page.locator('#goBtn').click()

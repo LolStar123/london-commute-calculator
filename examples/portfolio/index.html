@@ -5,10 +5,13 @@
 </style><style>
 #jbar,#goHint{display:none!important}.reco{display:grid;grid-template-columns:1fr auto;align-items:end;gap:6px 24px}.reco .winner-badge{grid-column:1/-1}.reco h2{margin:0;font:30px/1.05 Georgia,serif;font-weight:400}.reco .price{font:28px/1 Georgia,serif}.reco p{grid-column:1/-1;margin:6px 0 0;color:var(--muted)}.ocard small{color:var(--green);text-transform:uppercase;letter-spacing:.08em}.ocard h3{font:19px/1.15 Georgia,serif;font-weight:400}.ocard .price{margin-top:14px}.ocard p:last-child{color:var(--muted);font-size:12px}.acd:not(.open){display:none}
 @media(max-width:650px){.reco{grid-template-columns:1fr}.reco .price{margin-top:8px}}
+</style><style>
+.hero .eyebrow{margin:0 0 10px;color:var(--green);font-size:11px;letter-spacing:.12em;text-transform:uppercase}.return-basis{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:11px}.return-basis span{padding:5px 8px;border:1px solid var(--line);background:#161c1d}.return-basis b{color:var(--ink);font-weight:500}.reco .price{white-space:nowrap}
+@media(max-width:650px){.return-basis{gap:6px}.return-basis span{flex:1 1 135px}}
 </style><link rel="stylesheet" href="identity.css"></head><body>
 <header class="top"><a href="https://lolstar123.github.io/just-a-little-further/">atul / commute</a><nav><a href="https://github.com/LolStar123/london-commute-calculator">source</a></nav></header>
 <main>
-<section class="hero"><h1>how much is the commute?</h1></section>
+<section class="hero"><p class="eyebrow">home → work → home</p><h1>find the cheapest return</h1></section>
 <section class="planner">
 <div class="srow">
 <div class="fg"><label for="fromStation">from</label><input class="si" id="fromStation" autocomplete="off"><div class="acd" id="fromDD"></div></div>
@@ -1272,7 +1275,11 @@
                         cheap.annual /
                         ((52 - leave) * days)
                     ).toFixed(2);
-                    recoEl.innerHTML = `<div class="winner-badge">best option</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}/day</div><p>£${cheap.annual.toLocaleString()}/year${savings > 0 ? ` · saves £${savings.toLocaleString()}` : ""}</p>`;
+                    const outboundFare = sf ? (hrow || mp ? sf.p : sf.o) : 0,
+                        returnFare = sf ? (hrow || ep ? sf.p : sf.o) : 0,
+                        outboundLabel = hrow || mp ? "peak" : "off-peak",
+                        returnLabel = hrow || ep ? "peak" : "off-peak";
+                    recoEl.innerHTML = `<div class="winner-badge">best option · ${days} days/week</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}/day</div><p>£${cheap.annual.toLocaleString()}/year${savings > 0 ? ` · saves £${savings.toLocaleString()}` : ""}</p><div class="return-basis"><span>outbound <b>${dt} · ${outboundLabel} £${outboundFare.toFixed(2)}</b></span><span>return <b>${rt} · ${returnLabel} £${returnFare.toFixed(2)}</b></span></div>`;
 
                     // Cards
                     document.getElementById("oGrid").innerHTML = res.slice(1, 3)
