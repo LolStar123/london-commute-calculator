@@ -1,9 +1,7 @@
 # London commute calculator
 
-[Open the full calculator](https://lolstar123.github.io/london-commute-calculator/) | [application source](index.html) | [station database](london-stations.js)
+Serve this directory with `python -m http.server 8000 --directory examples/portfolio` from the repository root, then open http://localhost:8000.
 
-Choose your stations, both travel times and working week. The focused public calculator compares PAYG with weekly, monthly and annual passes, then shows the cheapest answer and two alternatives.
+Choose stations, commuting days and both travel times. The recommendation compares annual costs for PAYG and weekly, monthly and annual Travelcards using bundled March 2026 fare tables. It is a zone estimate, not a live route quotation.
 
-The app uses the original station database and March 2026 fare table. Inputs stay in the browser. These are dated fare assumptions, not a live quotation.
-
-From the repository root, run `python -m http.server 8000 --directory examples/portfolio` and open localhost:8000. Run `python tools/browser_audit.py` to check the actual application. See the [repository guide](../../README.md) and [data scope](../../PROVENANCE.md).
+See the [repository guide](../../README.md) for assumptions, limitations, browser checks and the code map. The [advanced original](../../original/london-commute-optimizer.html) retains its wider controls.

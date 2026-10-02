@@ -1,33 +1,25 @@
 ﻿<!doctype html>
-<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>commute cost optimiser</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
-<style>
-:root{color-scheme:dark;--bg:#15191c;--ink:#ece9df;--muted:#979b9d;--line:#363d40;--green:#79b895;--quiet:#1e2426}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",Arial,sans-serif}a{color:inherit;text-decoration-color:#617269;text-underline-offset:5px}button,input,select{font:inherit;color:inherit;border-radius:0}:focus-visible{outline:2px solid var(--green);outline-offset:3px}[hidden],.support{display:none!important}.top,main{width:min(880px,calc(100% - 48px));margin:auto}.top{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:12px}.top nav{display:flex;gap:22px;color:var(--muted)}main{padding:68px 0}.hero p{margin:0 0 10px;color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}.hero h1{margin:0 0 48px;font:54px/.97 Georgia,serif;font-weight:400;letter-spacing:-.04em}.hero em{color:var(--green);font-weight:400}.planner{border-block:1px solid var(--line);padding:26px 0}.srow{display:grid;grid-template-columns:1fr 42px 1fr;align-items:end;gap:10px}.fg label{display:block;margin-bottom:7px;color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}.si{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--line);background:var(--quiet)}.swap{width:42px;height:48px;border:1px solid var(--line);background:transparent}.compact{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.go-btn{width:100%;min-height:50px;margin-top:18px;border:1px solid var(--green);background:var(--green);color:#111915;font-weight:700}.go-btn.disabled{opacity:.4}.jbar{margin-top:10px;color:var(--muted);font-size:12px}.results{display:none;margin-top:38px}.results.vis{display:block}.results-shell{display:grid;gap:14px}.reco{padding:24px;border:1px solid #547562;background:#19221e}.reco h2,.reco h3,.reco p{margin-top:0}.g-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.ocard{padding:15px;border:1px solid var(--line);background:var(--quiet)}.ocard.best{border-color:var(--green)}.ocard h3,.ocard p{margin:0 0 7px}.ocard .price,.reco .price{color:var(--green);font-size:22px;font-weight:700}.save-badge,.winner-badge{color:var(--green);font-size:12px}.results .section{margin:0}.results .section:not(.results-shell){display:none!important}.results>#timeTip,.results>#rcTip,.results>#switchBanner{display:none!important}.action-btns{display:none!important}.acd{position:absolute;z-index:5;background:var(--quiet);border:1px solid var(--line);max-height:220px;overflow:auto}.fg{position:relative}.aci{padding:8px 10px;cursor:pointer}.aci:hover{background:#293034}.zvis span{margin-right:7px}.jerr{color:#d69280;font-size:12px}footer{width:min(880px,calc(100% - 48px));margin:50px auto 0;padding:20px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}@media(max-width:650px){.top,main,footer{width:calc(100% - 30px)}.top{height:58px}main{padding:46px 0}.hero h1{font-size:clamp(40px,13vw,53px)}.srow{grid-template-columns:1fr 38px 1fr}.compact{grid-template-columns:1fr}.g-cards{grid-template-columns:1fr}.reco{padding:18px}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style><style>
-#jbar,#goHint{display:none!important}.reco{display:grid;grid-template-columns:1fr auto;align-items:end;gap:6px 24px}.reco .winner-badge{grid-column:1/-1}.reco h2{margin:0;font:30px/1.05 Georgia,serif;font-weight:400}.reco .price{font:28px/1 Georgia,serif}.reco p{grid-column:1/-1;margin:6px 0 0;color:var(--muted)}.ocard small{color:var(--green);text-transform:uppercase;letter-spacing:.08em}.ocard h3{font:19px/1.15 Georgia,serif;font-weight:400}.ocard .price{margin-top:14px}.ocard p:last-child{color:var(--muted);font-size:12px}.acd:not(.open){display:none}
-@media(max-width:650px){.reco{grid-template-columns:1fr}.reco .price{margin-top:8px}}
-</style><style>
-.hero .eyebrow{margin:0 0 10px;color:var(--green);font-size:11px;letter-spacing:.12em;text-transform:uppercase}.return-basis{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;color:var(--muted);font-size:11px}.return-basis span{padding:5px 8px;border:1px solid var(--line);background:#161c1d}.return-basis b{color:var(--ink);font-weight:500}.reco .price{white-space:nowrap}
-@media(max-width:650px){.return-basis{gap:6px}.return-basis span{flex:1 1 135px}}
-</style><link rel="stylesheet" href="identity.css"></head><body>
-<header class="top"><a href="https://lolstar123.github.io/just-a-little-further/">atul / commute</a><nav><a href="https://github.com/LolStar123/london-commute-calculator">source</a></nav></header>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>London commute calculator | Compare return fares</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css"></head><body>
+<header class="top"><a href="https://lolstar123.github.io/just-a-little-further/">Atul / projects</a><nav><a href="https://github.com/LolStar123/london-commute-calculator">Source</a></nav></header>
 <main>
-<section class="hero"><p class="eyebrow">home → work → home</p><h1>find the cheapest return</h1></section>
-<section class="planner">
+<section class="hero"><p class="eyebrow">London commute calculator</p><h1>Price your return journey.</h1><p class="fare-basis">Bundled March 2026 fares. Compare payment methods for your working week.</p></section><div class="journey-layout">
+<section class="planner" aria-label="Return journey"><div class="ticket-heading"><h2>Your working week</h2><span>Return journey</span></div><div class="route-trace" aria-hidden="true"><span><i></i>Home</span><b>→</b><span><i></i>Work</span><b>→</b><span><i></i>Home</span></div>
 <div class="srow">
-<div class="fg"><label for="fromStation">from</label><input class="si" id="fromStation" autocomplete="off"><div class="acd" id="fromDD"></div></div>
+<div class="fg"><label for="fromStation">Home station</label><input class="si" id="fromStation" autocomplete="off" placeholder="Search stations" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fromDD"><div class="acd" id="fromDD" role="listbox" aria-label="Home station suggestions"></div></div>
 <button class="swap" id="swapBtn" type="button" aria-label="Swap stations">⇄</button>
-<div class="fg"><label for="toStation">to</label><input class="si" id="toStation" autocomplete="off"><div class="acd" id="toDD"></div></div>
+<div class="fg"><label for="toStation">Work station</label><input class="si" id="toStation" autocomplete="off" placeholder="Search stations" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="toDD"><div class="acd" id="toDD" role="listbox" aria-label="Work station suggestions"></div></div>
 </div>
-<div class="compact"><div class="fg"><label for="days">days each week</label><select class="si" id="days"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div><div class="fg"><label for="dept">leave home</label><input class="si" type="time" id="dept" value="08:00"></div><div class="fg"><label for="ret">leave work</label><input class="si" type="time" id="ret" value="17:30"></div></div>
-<div id="jbar" class="jbar"><div id="zvis"></div><div id="fprev"></div></div><div id="jerr" class="jerr"></div>
-<button class="go-btn" id="goBtn" type="button">compare fares</button><div id="goHint"></div>
+<div class="compact"><div class="fg"><label for="days">Days per week</label><select class="si" id="days"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></div><div class="fg"><label for="dept">Leave home</label><input class="si" type="time" id="dept" value="08:00"></div><div class="fg"><label for="ret">Leave work</label><input class="si" type="time" id="ret" value="17:30"></div></div>
+<div id="jbar" class="jbar"><div id="zvis"></div><div id="fprev"></div></div><div id="jerr" class="jerr" role="status"></div>
+<button class="go-btn" id="goBtn" type="button">Compare fares</button><div id="goHint" role="status"></div><p class="ticket-note">Two trips per day. No Railcard or extra bus trips.</p>
 </section>
-<div class="results" id="res" aria-live="polite"><section class="section results-shell"><div class="reco" id="reco"></div><div class="g-cards" id="oGrid"></div></section><div id="switchBanner"></div><div id="timeTip"></div><div id="rcTip"></div>
+<div class="results" id="res" aria-live="polite"><section class="section results-shell"><div class="reco" id="reco" tabindex="-1"></div><div class="alternatives-heading">Next cheapest options</div><div class="g-cards" id="oGrid"></div><p class="estimate-note">Annual comparison assumes 5.6 weeks off: 46.4 commuting weeks. Per-day prices spread the annual cost over those travel days. Pass costs follow their bundled purchase rules.</p><p class="estimate-note">Zone-based estimate. Exact routes, Heathrow and National Rail exceptions can differ. <a href="https://tfl.gov.uk/fares/">Check current TfL fares</a> before buying.</p></section><div id="switchBanner"></div><div id="timeTip"></div><div id="rcTip"></div>
 <div class="support">
 <select id="trips"><option value="2" selected>2</option></select><select id="bus"><option value="0" selected>0</option></select><input id="leave" value="5.6"><select id="rc"><option value="none" selected>none</option></select><input id="sal"><select id="curMethod"><option value="unknown" selected>unknown</option></select>
 <span id="mInd"></span><span id="eInd"></span><div id="teaser"></div><div id="tips"></div><div id="wfhBars"></div><div id="beSection"></div><div id="beChart"></div><div id="beCrossover"></div><div id="driveSection"></div><div id="dComp"></div><div id="cycSection"></div><div id="cycGrid"></div><div id="mbar"></div><div id="mbarLabel"></div><div id="loanSec"></div><div id="loanBox"></div><div id="fstats"></div><div id="htbSteps"></div><div id="faq"></div><div id="closingText"></div><button id="ctaPrint"></button><div id="tableWrap"><table><tbody id="tbody"></tbody></table></div><button id="recalcBtn"></button><button id="printBtn"></button><button id="shareBtn"></button><button id="resetBtn"></button><button id="btt"></button><div id="ps1"></div><div id="ps2"></div><div id="ps3"></div><div id="pl1"></div><div id="pl2"></div>
 </div></div>
-</main><footer>March 2026 TfL fares · runs in your browser</footer>
+</div></main><footer>March 2026 fare tables · Calculated in your browser · <a href="https://github.com/LolStar123/london-commute-calculator/blob/main/PROVENANCE.md">Fare basis</a></footer>
 <script>
             // â”€â”€ STATIONS â”€â”€
             const ST = {
@@ -770,6 +762,10 @@
             // Animated number counter
             function animateCount(el, target, prefix, suffix, duration) {
                 if (!el) return;
+                if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                    el.textContent = prefix + Math.round(target).toLocaleString("en-GB") + suffix;
+                    return;
+                }
                 const start = performance.now();
                 const from = 0;
                 function tick(now) {
@@ -924,7 +920,7 @@
                 const debouncedSearch = debounce(() => {
                     const r = search(inp.value);
                     ai = -1;
-                    renderDD(dd, r, inp);
+                    if (document.activeElement === inp) renderDD(dd, r, inp);
                     if (ST[inp.value] != null) {
                         inp.classList.add("ok");
                         updateGoBtn();
@@ -938,6 +934,7 @@
                 });
                 inp.addEventListener("keydown", (e) => {
                     const its = dd.querySelectorAll(".aci");
+                    if (!dd.classList.contains("open")) return;
                     if (e.key === "ArrowDown") {
                         e.preventDefault();
                         ai = Math.min(ai + 1, its.length - 1);
@@ -951,6 +948,7 @@
                         inp.classList.add("ok");
                         dd.classList.remove("open");
                         inp.removeAttribute("aria-activedescendant");
+                        inp.setAttribute("aria-expanded", "false");
                         updateGoBtn();
                         recalc();
                         return;
@@ -973,7 +971,7 @@
                     }
                 });
                 inp.addEventListener("blur", () =>
-                    setTimeout(() => dd.classList.remove("open"), 150),
+                    setTimeout(() => { dd.classList.remove("open"); inp.setAttribute("aria-expanded", "false"); inp.removeAttribute("aria-activedescendant"); }, 150),
                 );
                 inp.addEventListener("focus", () => {
                     if (inp.value.length >= 1)
@@ -1118,29 +1116,20 @@
 
             // â”€â”€ GO BUTTON â”€â”€
             function handleGo() {
-                const btn = document.getElementById("goBtn");
-                if (btn.classList.contains("disabled")) return;
-                document.querySelectorAll(".acd.open").forEach((menu) => menu.classList.remove("open"));
+                if (document.getElementById("goBtn").disabled) return;
+                for (const menu of document.querySelectorAll(".acd.open")) {
+                    menu.classList.remove("open");
+                    document.querySelector(`[aria-controls="${menu.id}"]`).setAttribute("aria-expanded", "false");
+                }
+                recalc();
                 const res = document.getElementById("res");
-                btn.textContent = "Calculating";
-                btn.classList.add("loading");
-                res.setAttribute("aria-busy", "true");
-                setTimeout(() => {
-                    btn.classList.remove("loading");
-                    recalc();
-                    document.querySelectorAll(".acd.open").forEach((menu) => menu.classList.remove("open"));
-                    res.setAttribute("aria-busy", "false");
-                    btn.textContent = "compare fares";
-                    if (res.classList.contains("vis")) {
-                        res.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                        });
-                        const reco = document.getElementById("reco");
-                        if (reco) reco.focus({ preventScroll: true });
-                    } else
-                        btn.textContent = "Pick two different stations above";
-                }, 150);
+                if (res.classList.contains("vis")) {
+                    res.scrollIntoView({
+                        behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                        block: "start",
+                    });
+                    document.getElementById("reco").focus({ preventScroll: true });
+                }
             }
             function updateGoBtn() {
                 const f = document.getElementById("fromStation").value,
@@ -1149,7 +1138,9 @@
                     hint = document.getElementById("goHint");
                 const fOk = ST[f] != null,
                     tOk = ST[t] != null;
-                if (fOk && tOk) {
+                const timesOk = document.getElementById("dept").value && document.getElementById("ret").value;
+                btn.disabled = !(fOk && tOk && timesOk);
+                if (fOk && tOk && timesOk) {
                     btn.classList.remove("disabled");
                     btn.classList.add("ready");
                     hint.classList.add("hidden");
@@ -1158,7 +1149,9 @@
                     btn.classList.remove("ready");
                     hint.classList.remove("hidden");
                     hint.textContent =
-                        !fOk && !tOk
+                        !timesOk
+                            ? "Enter both travel times."
+                            : !fOk && !tOk
                             ? "Pick your departure and arrival stations above to get started"
                             : !fOk
                               ? "Now pick your departure station"
@@ -1168,6 +1161,10 @@
 
             // â”€â”€ MAIN â”€â”€
             function recalc() {
+                if (!document.getElementById("dept").value || !document.getElementById("ret").value) {
+                    document.getElementById("res").classList.remove("vis");
+                    return;
+                }
                 try {
                     const from = document.getElementById("fromStation").value,
                         to = document.getElementById("toStation").value;
@@ -1282,42 +1279,15 @@
                         returnFare = sf ? (hrow || ep ? sf.p : sf.o) : 0,
                         outboundLabel = hrow || mp ? "peak" : "off-peak",
                         returnLabel = hrow || ep ? "peak" : "off-peak";
-                    recoEl.innerHTML = `<div class="winner-badge">best option · ${days} days/week</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}/day</div><p>£${cheap.annual.toLocaleString()}/year${nextSaving > 0 ? ` · £${nextSaving.toLocaleString()} less than ${LABELS[nextCheapest.name]}` : ""}</p><div class="return-basis"><span>outbound <b>${dt} · ${outboundLabel} £${outboundFare.toFixed(2)}</b></span><span>return <b>${rt} · ${returnLabel} £${returnFare.toFixed(2)}</b></span></div>`;
+                    recoEl.innerHTML = `<div class="winner-badge">Lowest annual cost · ${days} days/week</div><h2>${LABELS[cheap.name]}</h2><div class="price">£${dailyCost}</div><span class="daily-unit">per commuting day</span><p>£${cheap.annual.toLocaleString()}/year${nextSaving > 0 ? ` · £${nextSaving.toLocaleString()} less than ${LABELS[nextCheapest.name]}` : ""}</p><div class="return-basis"><span>PAYG outbound <b>${dt} · ${outboundLabel} £${outboundFare.toFixed(2)}</b></span><span>PAYG return <b>${rt} · ${returnLabel} £${returnFare.toFixed(2)}</b></span></div>`;
 
                     // Cards
                     document.getElementById("oGrid").innerHTML = res.slice(1, 3)
                         .map((r, i) => {
                             const diff = r.annual - cheap.annual;
-                            return `<article class="ocard" data-idx="${i + 1}" tabindex="0"><h3>${LABELS[r.name]}</h3><p class="price">£${r.annual.toLocaleString("en-GB", {maximumFractionDigits: 0})}/yr</p><p>£${r.monthly.toFixed(2)}/month · +£${diff.toFixed(0)}/yr</p></article>`;
+                            return `<article class="ocard"><h3>${LABELS[r.name]}</h3><p class="price">£${r.annual.toLocaleString("en-GB", {maximumFractionDigits: 0})}/yr</p><p>£${r.monthly.toFixed(2)}/month · +£${diff.toFixed(0)}/yr</p></article>`;
                         })
                         .join("");
-                    // Card click â†’ scroll to breakdown row
-                    document.querySelectorAll("#oGrid .ocard").forEach((c) => {
-                        const handler = () => {
-                            const idx = +c.dataset.idx;
-                            const row =
-                                document.querySelectorAll("#tbody tr")[idx];
-                            if (row) {
-                                row.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "center",
-                                });
-                                row.classList.add("hl");
-                                setTimeout(
-                                    () => row.classList.remove("hl"),
-                                    1200,
-                                );
-                            }
-                        };
-                        c.addEventListener("click", handler);
-                        c.addEventListener("keydown", (e) => {
-                            if (e.key === "Enter" || e.key === " ") {
-                                e.preventDefault();
-                                handler();
-                            }
-                        });
-                    });
-
                     // Breakdown
                     document.getElementById("tbody").innerHTML = res
                         .map(
@@ -1761,7 +1731,7 @@
                         document
                             .getElementById("res")
                             .scrollIntoView({
-                                behavior: "smooth",
+                                behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
                                 block: "start",
                             });
                         window._sc = true;
@@ -2223,6 +2193,7 @@
                     jerr.textContent =
                         "You've picked the same station for both. Choose a different destination to see your commute costs.";
                     jerr.classList.add("vis");
+                    document.getElementById("res").classList.remove("vis");
                     return;
                 }
                 if (!j) {
@@ -2308,7 +2279,7 @@
             const scrollToHero = () =>
                 document
                     .querySelector(".hero")
-                    .scrollIntoView({ behavior: "smooth" });
+                    .scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
             document
                 .getElementById("btt")
                 .addEventListener("click", scrollToHero);
@@ -2395,6 +2366,14 @@
                 });
             })();
 
+            // This focused view persists only the controls it exposes.
+            SAVE_FIELDS.splice(0, SAVE_FIELDS.length, "fromStation", "toStation", "days", "dept", "ret");
+            for (const id of ["dept", "ret"]) {
+                document.getElementById(id).addEventListener("input", () => {
+                    updateGoBtn();
+                    if (!document.getElementById(id).value) document.getElementById("res").classList.remove("vis");
+                });
+            }
             // Init
             loadInputs();
             if (!document.getElementById("fromStation").value) {
