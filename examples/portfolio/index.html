@@ -4,7 +4,7 @@
 <header class="top"><a href="https://lolstar123.github.io/just-a-little-further/">Atul / projects</a><nav><a href="https://github.com/LolStar123/london-commute-calculator">Source</a></nav></header>
 <main>
 <section class="hero"><p class="eyebrow">London commute calculator</p><h1>Price your return journey.</h1><p class="fare-basis">Bundled March 2026 fares. Compare payment methods for your working week.</p></section><div class="journey-layout">
-<section class="planner" aria-label="Return journey"><div class="ticket-heading"><h2>Your working week</h2><span>Return journey</span></div><div class="route-trace" aria-hidden="true"><span><i></i>Home</span><b>→</b><span><i></i>Work</span><b>→</b><span><i></i>Home</span></div>
+<section class="planner" aria-label="Return journey"><div class="ticket-heading"><h2>Your working week</h2></div><div class="route-trace" aria-hidden="true"><span><i></i>Home</span><b>→</b><span><i></i>Work</span><b>→</b><span><i></i>Home</span></div>
 <div class="srow">
 <div class="fg"><label for="fromStation">Home station</label><input class="si" id="fromStation" autocomplete="off" placeholder="Search stations" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fromDD"><div class="acd" id="fromDD" role="listbox" aria-label="Home station suggestions"></div></div>
 <button class="swap" id="swapBtn" type="button" aria-label="Swap stations">⇄</button>
@@ -14,12 +14,12 @@
 <div id="jbar" class="jbar"><div id="zvis"></div><div id="fprev"></div></div><div id="jerr" class="jerr" role="status"></div>
 <button class="go-btn" id="goBtn" type="button">Compare fares</button><div id="goHint" role="status"></div><p class="ticket-note">Two trips per day. No Railcard or extra bus trips.</p>
 </section>
-<div class="results" id="res" aria-live="polite"><section class="section results-shell"><div class="reco" id="reco" tabindex="-1"></div><div class="alternatives-heading">Next cheapest options</div><div class="g-cards" id="oGrid"></div><p class="estimate-note">Annual comparison assumes 5.6 weeks off: 46.4 commuting weeks. Per-day prices spread the annual cost over those travel days. Pass costs follow their bundled purchase rules.</p><p class="estimate-note">Zone-based estimate. Exact routes, Heathrow and National Rail exceptions can differ. <a href="https://tfl.gov.uk/fares/">Check current TfL fares</a> before buying.</p></section><div id="switchBanner"></div><div id="timeTip"></div><div id="rcTip"></div>
+<div class="results" id="res" aria-live="polite"><section class="section results-shell"><div class="reco" id="reco" tabindex="-1"></div><div class="alternatives-heading">Next cheapest options</div><div class="g-cards" id="oGrid"></div><p class="estimate-note">Annual comparison assumes 5.6 weeks off: 46.4 commuting weeks. Per-day prices spread the annual cost over those travel days.</p><p class="estimate-note">Zone-based estimate. Exact routes, Heathrow and National Rail exceptions can differ. <a href="https://tfl.gov.uk/fares/">Check current TfL fares</a> before buying.</p></section><div id="switchBanner"></div><div id="timeTip"></div><div id="rcTip"></div>
 <div class="support">
 <select id="trips"><option value="2" selected>2</option></select><select id="bus"><option value="0" selected>0</option></select><input id="leave" value="5.6"><select id="rc"><option value="none" selected>none</option></select><input id="sal"><select id="curMethod"><option value="unknown" selected>unknown</option></select>
 <span id="mInd"></span><span id="eInd"></span><div id="teaser"></div><div id="tips"></div><div id="wfhBars"></div><div id="beSection"></div><div id="beChart"></div><div id="beCrossover"></div><div id="driveSection"></div><div id="dComp"></div><div id="cycSection"></div><div id="cycGrid"></div><div id="mbar"></div><div id="mbarLabel"></div><div id="loanSec"></div><div id="loanBox"></div><div id="fstats"></div><div id="htbSteps"></div><div id="faq"></div><div id="closingText"></div><button id="ctaPrint"></button><div id="tableWrap"><table><tbody id="tbody"></tbody></table></div><button id="recalcBtn"></button><button id="printBtn"></button><button id="shareBtn"></button><button id="resetBtn"></button><button id="btt"></button><div id="ps1"></div><div id="ps2"></div><div id="ps3"></div><div id="pl1"></div><div id="pl2"></div>
 </div></div>
-</div></main><footer>March 2026 fare tables · Calculated in your browser · <a href="https://github.com/LolStar123/london-commute-calculator/blob/main/PROVENANCE.md">Fare basis</a></footer>
+</div></main><footer>Calculated in your browser · <a href="https://github.com/LolStar123/london-commute-calculator/blob/main/PROVENANCE.md">Fare basis</a></footer>
 <script>
             // â”€â”€ STATIONS â”€â”€
             const ST = {
